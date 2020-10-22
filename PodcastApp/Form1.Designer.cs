@@ -48,6 +48,8 @@
             this.lblRubrikPodcastInfo = new System.Windows.Forms.Label();
             this.lblPodcastBeskrivning = new System.Windows.Forms.Label();
             this.podcastInfoGridView = new System.Windows.Forms.DataGridView();
+            this.lblNamn = new System.Windows.Forms.Label();
+            this.txtNamn = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.podcastInfoGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -222,11 +224,29 @@
             this.podcastInfoGridView.Size = new System.Drawing.Size(711, 271);
             this.podcastInfoGridView.TabIndex = 21;
             // 
+            // lblNamn
+            // 
+            this.lblNamn.AutoSize = true;
+            this.lblNamn.Location = new System.Drawing.Point(29, 377);
+            this.lblNamn.Name = "lblNamn";
+            this.lblNamn.Size = new System.Drawing.Size(35, 13);
+            this.lblNamn.TabIndex = 22;
+            this.lblNamn.Text = "label1";
+            // 
+            // txtNamn
+            // 
+            this.txtNamn.Location = new System.Drawing.Point(32, 392);
+            this.txtNamn.Name = "txtNamn";
+            this.txtNamn.Size = new System.Drawing.Size(252, 20);
+            this.txtNamn.TabIndex = 23;
+            // 
             // Podcast_app
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1210, 776);
+            this.Controls.Add(this.txtNamn);
+            this.Controls.Add(this.lblNamn);
             this.Controls.Add(this.podcastInfoGridView);
             this.Controls.Add(this.lblPodcastBeskrivning);
             this.Controls.Add(this.lblRubrikPodcastInfo);
@@ -277,6 +297,8 @@
         private System.Windows.Forms.Label lblRubrikPodcastInfo;
         private System.Windows.Forms.Label lblPodcastBeskrivning;
         private System.Windows.Forms.DataGridView podcastInfoGridView;
+        private System.Windows.Forms.Label lblNamn;
+        private System.Windows.Forms.TextBox txtNamn;
     }
 }
 

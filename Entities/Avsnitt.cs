@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DL
+namespace Entities
 {
-    public class Class1
+    public class Avsnitt
     {
+        public string Beskrivning { get; set; }
+        public int Nummer { get; set; }
     }
 }
