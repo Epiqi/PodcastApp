@@ -18,7 +18,6 @@ namespace PodcastApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            RssHanterare.prov();
             Application.Run(new Podcast_app());
             
         }
