@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="DataManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RssHanterare.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Repositories\" />

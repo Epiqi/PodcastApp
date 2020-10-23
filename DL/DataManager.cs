@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DL
 {
-    internal class DataManager
+    /*internal class DataManager
     {
         public void Serialize(List<Person> personList)
         {
@@ -30,5 +30,6 @@ namespace DL
 
             return listOfPersonsToBeReturned; 
         }
-    }
+    }*/
 }
+    
