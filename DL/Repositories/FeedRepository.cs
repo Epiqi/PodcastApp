@@ -39,7 +39,7 @@ namespace DL.Repositories
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
             }
 
             return savedFeeds;

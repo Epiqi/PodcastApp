@@ -1,58 +1,49 @@
 ﻿using System;
 using System.Windows.Forms;
-using Entities;
+using BL.Validering;
+using BL.Controllers;
+
+
+
 
 namespace PodcastApp
 {
     public partial class Podcast_app : Form
     {
+        FeedController feedController;
         public Podcast_app()
         {
             InitializeComponent();
+            feedController = new FeedController();
         }
 
         private void btnNyFeed_Click(object sender, System.EventArgs e)
-        {   
-            if (!String.IsNullOrEmpty(txtNamn.Text) && !String.IsNullOrEmpty(txtURL.Text) && !String.IsNullOrEmpty(cmbxFrekvens.Text) && !String.IsNullOrEmpty(cmbxKategori.Text)) 
+        {
+            try
             {
-                //feedController.SkapaFeedObjekt(txtNamn.Text, txtURL.Text, cmbxFrekvens.Text, cmbxKategori.Text)
-                
-                string urlAdress = txtURL.Text;
-                bool korrektUrl = ValideringAvEntities.KorrektURL(urlAdress);
-
-                if (korrektUrl)
-                {
-                    System.Console.WriteLine(urlAdress);
-                }
-                else
-                {
-                    //throw new Exception
-                }
-            }
+                string namn = txtNamn.Text;
+                string url = txtURL.Text;
+                string frekvens = cmbxFrekvens.Text;
+                string kategori = cmbxKategori.Text;
             
-
-            bool enFrekvensArVald = Int32.TryParse(cmbxFrekvens.Text, out int frekvens);
-            if (enFrekvensArVald)
-            {
-                Console.WriteLine(" " + frekvens);
-            }
-            else
-            {
-                //throw new Exception
-            }
-
-            if (!String.IsNullOrEmpty(txtValdKategori.Text))
-            {
-                string enKategori = txtValdKategori.Text;
-                bool enKategoriArVald = ValideringAvEntities.KorrektKategori(enKategori);
-                if (enKategoriArVald)
+                if (!String.IsNullOrEmpty(namn) && !String.IsNullOrEmpty(txtURL.Text) 
+                    && !String.IsNullOrEmpty(cmbxFrekvens.Text) && !String.IsNullOrEmpty(cmbxKategori.Text)) 
                 {
-
+                    if (ValideringAvEntities.KorrektNamn(namn) && ValideringAvEntities.KorrektURL(url)
+                        && ValideringAvEntities.EnFrekvensArVald(frekvens) && ValideringAvEntities.KorrektKategori(kategori))
+                    {
+                        feedController.SkapaFeedObjekt(txtNamn.Text, txtURL.Text, cmbxFrekvens.Text, cmbxKategori.Text);
+                    }
                 }
                 else
                 {
-
+                    MessageBox.Show("Det måste finnas värden i alla rutor");
                 }
+
+            }
+            catch( UserException exception)
+            {
+                MessageBox.Show(exception.Message);
             }
         }
     }

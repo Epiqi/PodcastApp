@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BL
+namespace BL.Controllers
 {
-    class AvsnittController
+    public class FeedController
     {
     }
 }
