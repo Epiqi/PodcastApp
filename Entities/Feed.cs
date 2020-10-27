@@ -10,6 +10,7 @@ namespace Entities
     {
         public List<Avsnitt> Avsnitten { get; set; }
         public string Namn { get; set; }
+        public string Beskrivning { get; set; }
         public int UppdateringsTid { get; set; }
         public string Kategori { get; set; }
         public string Url { get; set;}
@@ -18,6 +19,6 @@ namespace Entities
         {
             Avsnitten = new List<Avsnitt>();
         }
-        
+
     }
 }
