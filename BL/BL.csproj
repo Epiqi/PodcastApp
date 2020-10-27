@@ -46,7 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AvsnittController.cs" />
+    <Compile Include="FeedController.cs" />
+    <Compile Include="KategoriController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validering\ValideringAvEntities.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
