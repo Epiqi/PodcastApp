@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BL.Validering;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Entities
 {
-    public abstract class ValideringAvEntities
+    public static class ValideringAvEntities 
     {
-        public bool korrekt;
+        
 
         public static bool KorrektURL(string urlAdress)
         {
@@ -18,19 +19,29 @@ namespace Entities
                 && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
             if (!korrekt)
             {
-                System.Windows.Forms.MessageBox.Show("Felaktig URL");
+               throw new UserException("URLadressen är inte korrekt");
             }
             return korrekt;
         }
 
-        public static bool KorrektFrekvens(string frekvens) 
+        public static bool EnFrekvensArVald(string frekvens) 
         {
-            return
+            bool korrekt = Int32.TryParse(frekvens, out int frekvensArVald);
+            if (!korrekt)
+            {
+                throw new UserException("Ingen frekvens är vald");
+            }
+            return korrekt;
         }
         public static bool KorrektKategori(string enKategori)
         {
-            throw new NotImplementedException();
+            bool korrekt = ??;
+            if (!korrekt)
+            {
+                throw new UserException("Ingen kategori är vald");
+            }
+            return korrekt;
         }
-        // throw exceptions med meddelanden till användaren
+        
     }
 }
