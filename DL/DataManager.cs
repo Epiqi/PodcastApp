@@ -1,35 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
+using Entities;
 
 namespace DL
 {
-    /*internal class DataManager
+    internal class DataManager
     {
-        public void Serialize(List<Person> personList)
+        public void Serialize(List<Feed> feedList)
         {
-            XmlSerializer xmlSerializer = new XmlSerializer(personList.GetType());
+            XmlSerializer xmlSerializer = new XmlSerializer(feedList.GetType());
 
-            using (FileStream outFile = new FileStream("Persons.xml", FileMode.Create, FileAccess.Write))
+            using (FileStream utFile = new FileStream("pod.xml", FileMode.Create, FileAccess.Write))
             {
-                xmlSerializer.Serialize(outFile, personList);
+                xmlSerializer.Serialize(utFile, feedList);
             }
         }
 
-        public List<Person> Deserialize()
+        public List<Feed> Deserialize()
         {
-            List<Person> listOfPersonsToBeReturned;
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Person>));
+            List<Feed> toBeReturned;
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Feed>));
 
-            using (FileStream inFile = new FileStream("Persons.xml", FileMode.Open, FileAccess.Read))
+            using (FileStream inFile = new FileStream("pod.xml", FileMode.Open, FileAccess.Read))
             {
-                listOfPersonsToBeReturned = (List<Person>)xmlSerializer.Deserialize(inFile);
+                toBeReturned = (List<Feed>)xmlSerializer.Deserialize(inFile);
             }
 
-            return listOfPersonsToBeReturned; 
+            return toBeReturned;
         }
-    }*/
+    }
 }
-    

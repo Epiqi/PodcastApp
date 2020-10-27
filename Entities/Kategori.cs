@@ -8,5 +8,7 @@ namespace Entities
 {
     public class Kategori
     {
+        public string Namn { get; set; }
+        public int Nummer { get; set; }
     }
 }
