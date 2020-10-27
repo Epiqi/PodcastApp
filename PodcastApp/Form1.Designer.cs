@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblURL = new System.Windows.Forms.Label();
             this.lblUppdateringsf = new System.Windows.Forms.Label();
             this.lblKategori = new System.Windows.Forms.Label();
             this.txtURL = new System.Windows.Forms.TextBox();
             this.cmbxFrekvens = new System.Windows.Forms.ComboBox();
             this.cmbxKategori = new System.Windows.Forms.ComboBox();
-            this.btnNy = new System.Windows.Forms.Button();
-            this.btnSpara = new System.Windows.Forms.Button();
+            this.btnNyFeed = new System.Windows.Forms.Button();
+            this.btnSparaNyaVardenFeed = new System.Windows.Forms.Button();
             this.btnTaBort = new System.Windows.Forms.Button();
             this.lblAvsnitt = new System.Windows.Forms.Label();
             this.lstAvsnitt = new System.Windows.Forms.ListBox();
@@ -103,9 +103,9 @@
             // 
             this.cmbxFrekvens.FormattingEnabled = true;
             this.cmbxFrekvens.Items.AddRange(new object[] {
-            "option 1",
-            "option2",
-            "option 3"});
+            "1",
+            "5",
+            "10"});
             this.cmbxFrekvens.Location = new System.Drawing.Point(311, 337);
             this.cmbxFrekvens.Name = "cmbxFrekvens";
             this.cmbxFrekvens.Size = new System.Drawing.Size(229, 21);
@@ -122,25 +122,26 @@
             this.cmbxKategori.TabIndex = 6;
             this.cmbxKategori.Text = "Välj en kategori";
             // 
-            // btnNy
+            // btnNyFeed
             // 
-            this.btnNy.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNy.Location = new System.Drawing.Point(414, 390);
-            this.btnNy.Name = "btnNy";
-            this.btnNy.Size = new System.Drawing.Size(75, 23);
-            this.btnNy.TabIndex = 7;
-            this.btnNy.Text = "Ny...";
-            this.btnNy.UseVisualStyleBackColor = true;
+            this.btnNyFeed.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNyFeed.Location = new System.Drawing.Point(414, 390);
+            this.btnNyFeed.Name = "btnNyFeed";
+            this.btnNyFeed.Size = new System.Drawing.Size(75, 23);
+            this.btnNyFeed.TabIndex = 7;
+            this.btnNyFeed.Text = "Ny...";
+            this.btnNyFeed.UseVisualStyleBackColor = true;
+            this.btnNyFeed.Click += new System.EventHandler(this.btnNyFeed_Click);
             // 
-            // btnSpara
+            // btnSparaNyaVardenFeed
             // 
-            this.btnSpara.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSpara.Location = new System.Drawing.Point(538, 390);
-            this.btnSpara.Name = "btnSpara";
-            this.btnSpara.Size = new System.Drawing.Size(75, 23);
-            this.btnSpara.TabIndex = 8;
-            this.btnSpara.Text = "Spara";
-            this.btnSpara.UseVisualStyleBackColor = true;
+            this.btnSparaNyaVardenFeed.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSparaNyaVardenFeed.Location = new System.Drawing.Point(538, 390);
+            this.btnSparaNyaVardenFeed.Name = "btnSparaNyaVardenFeed";
+            this.btnSparaNyaVardenFeed.Size = new System.Drawing.Size(75, 23);
+            this.btnSparaNyaVardenFeed.TabIndex = 8;
+            this.btnSparaNyaVardenFeed.Text = "Spara";
+            this.btnSparaNyaVardenFeed.UseVisualStyleBackColor = true;
             // 
             // btnTaBort
             // 
@@ -253,14 +254,14 @@
             this.podcastInfoGridView.AllowUserToDeleteRows = false;
             this.podcastInfoGridView.AllowUserToResizeColumns = false;
             this.podcastInfoGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ButtonFace;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.podcastInfoGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.ButtonFace;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.podcastInfoGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.podcastInfoGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.podcastInfoGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnAvsnitt,
@@ -273,7 +274,6 @@
             this.podcastInfoGridView.RowHeadersVisible = false;
             this.podcastInfoGridView.Size = new System.Drawing.Size(714, 272);
             this.podcastInfoGridView.TabIndex = 21;
-            this.podcastInfoGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.podcastInfoGridView_CellContentClick);
             // 
             // lblNamn
             // 
@@ -281,9 +281,9 @@
             this.lblNamn.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNamn.Location = new System.Drawing.Point(26, 370);
             this.lblNamn.Name = "lblNamn";
-            this.lblNamn.Size = new System.Drawing.Size(60, 19);
+            this.lblNamn.Size = new System.Drawing.Size(117, 19);
             this.lblNamn.TabIndex = 22;
-            this.lblNamn.Text = "Namn:";
+            this.lblNamn.Text = "Namn på pod:";
             // 
             // txtNamn
             // 
@@ -320,8 +320,8 @@
             // 
             // ColumnAvsnitt
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.ColumnAvsnitt.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.ColumnAvsnitt.DefaultCellStyle = dataGridViewCellStyle6;
             this.ColumnAvsnitt.HeaderText = "Avsnitt";
             this.ColumnAvsnitt.Name = "ColumnAvsnitt";
             this.ColumnAvsnitt.ReadOnly = true;
@@ -368,8 +368,8 @@
             this.Controls.Add(this.lstAvsnitt);
             this.Controls.Add(this.lblAvsnitt);
             this.Controls.Add(this.btnTaBort);
-            this.Controls.Add(this.btnSpara);
-            this.Controls.Add(this.btnNy);
+            this.Controls.Add(this.btnSparaNyaVardenFeed);
+            this.Controls.Add(this.btnNyFeed);
             this.Controls.Add(this.cmbxKategori);
             this.Controls.Add(this.cmbxFrekvens);
             this.Controls.Add(this.txtURL);
@@ -379,6 +379,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Name = "Podcast_app";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Podcast app";
             ((System.ComponentModel.ISupportInitialize)(this.podcastInfoGridView)).EndInit();
             this.ResumeLayout(false);
@@ -394,8 +395,8 @@
         private System.Windows.Forms.TextBox txtURL;
         private System.Windows.Forms.ComboBox cmbxFrekvens;
         private System.Windows.Forms.ComboBox cmbxKategori;
-        private System.Windows.Forms.Button btnNy;
-        private System.Windows.Forms.Button btnSpara;
+        private System.Windows.Forms.Button btnNyFeed;
+        private System.Windows.Forms.Button btnSparaNyaVardenFeed;
         private System.Windows.Forms.Button btnTaBort;
         private System.Windows.Forms.Label lblAvsnitt;
         private System.Windows.Forms.ListBox lstAvsnitt;

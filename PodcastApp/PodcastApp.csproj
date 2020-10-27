@@ -86,9 +86,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BL\BL.csproj">
+      <Project>{dc6233e7-5060-4645-b512-b47c6e41ecb3}</Project>
+      <Name>BL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DL\DL.csproj">
       <Project>{6cbb63f5-50de-48da-a17c-95c4d54619f3}</Project>
       <Name>DL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entities\Entities.csproj">
+      <Project>{3416020e-03ad-4181-9a68-85e468d2ee72}</Project>
+      <Name>Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
