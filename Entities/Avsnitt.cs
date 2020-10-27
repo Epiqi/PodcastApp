@@ -8,7 +8,13 @@ namespace Entities
 {
     public class Avsnitt
     {
+        public string Namn { get; set; }
         public string Beskrivning { get; set; }
         public int Nummer { get; set; }
+
+        public Avsnitt()
+        {
+
+        }
     }
 }
