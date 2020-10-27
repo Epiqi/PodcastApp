@@ -23,6 +23,10 @@ namespace Entities
             return korrekt;
         }
 
+        public static bool KorrektFrekvens(string frekvens) 
+        {
+            return
+        }
         public static bool KorrektKategori(string enKategori)
         {
             throw new NotImplementedException();
