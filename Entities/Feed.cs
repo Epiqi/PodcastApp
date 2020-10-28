@@ -10,7 +10,7 @@ namespace Entities
     {
         public List<Avsnitt> Avsnitten { get; set; }
 
-        public Kategori Kategorier { get; set; } 
+        public string Kategorier { get; set; }
         public string Namn { get; set; }
         public string Beskrivning { get; set; }
         public string Url { get; set; }
@@ -19,7 +19,7 @@ namespace Entities
         public Feed()
         {
             Avsnitten = new List<Avsnitt>();
-            
+
         }
 
     }
