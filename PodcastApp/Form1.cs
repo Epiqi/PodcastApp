@@ -3,53 +3,62 @@ using System.Windows.Forms;
 using BL.Validering;
 using BL.Controllers;
 using System.Collections.Generic;
+using Entities;
 
 namespace PodcastApp
 {
     public partial class Podcast_app : Form
     {
         FeedController feedController;
+        KategoriController kategoriController;
+        AvsnittController avsnittController;
+        
         public Podcast_app()
         {
             InitializeComponent();
             feedController = new FeedController();
-        }
+            kategoriController = new KategoriController();
+            avsnittController = new AvsnittController();
 
+        }
+        // Metoder för feeds
         private void btnNyFeed_Click(object sender, System.EventArgs e)
         {
-           /* try
-            {
-                string avsnitt = ""; //Hämta värde från rss-feed.
-                string namn = txtNamn.Text;
-                string url = txtURL.Text;
-                string frekvens = cmbxFrekvens.Text;
-                string kategori = cmbxKategori.Text;
-            
-                if (!String.IsNullOrEmpty(namn) && !String.IsNullOrEmpty(txtURL.Text) 
-                    && !String.IsNullOrEmpty(cmbxFrekvens.Text) && !String.IsNullOrEmpty(cmbxKategori.Text)) 
-                {
-                    if (ValideringAvEntities.KorrektNamn(namn) && ValideringAvEntities.KorrektURL(url)
-                        && ValideringAvEntities.EnFrekvensArVald(frekvens) && ValideringAvEntities.KorrektKategori(kategori))
-                    {
-                        //När vi fått URL måste vi läsa in och hämta antal avsnitt innan ett objekt kan skapas
-                        //feedController.SkapaFeedObjekt(namn, url, frekvens, kategori);
+            /* try
+             {
+                 
 
-                        
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Det måste finnas värden i alla rutor");
-                }
+                 if (!String.IsNullOrEmpty(txtNamn.Text) && !String.IsNullOrEmpty(txtURL.Text) 
+                     && !String.IsNullOrEmpty(cmbxFrekvens.Text) && !String.IsNullOrEmpty(cmbxKategori.Text)) 
+                 {
+                    string avsnitt = ""; //Hämta värde från rss-feed.
+                    string namn = txtNamn.Text;
+                    string url = txtURL.Text;
+                    string frekvens = cmbxFrekvens.Text;
+                    string kategori = cmbxKategori.Text;
 
-            }
-            catch( UserException exception)
-            {
-                MessageBox.Show(exception.Message);
-            }*/
+                     if (ValideringAvEntities.KorrektNamn(namn) && ValideringAvEntities.KorrektURL(url)
+                         && ValideringAvEntities.EnFrekvensArVald(frekvens) && ValideringAvEntities.KorrektKategori(kategori))
+                     {
+                         //När vi fått URL måste vi läsa in och hämta antal avsnitt innan ett objekt kan skapas
+                         //feedController.SkapaFeedObjekt(namn, url, frekvens, kategori);
 
-           //Hur man lägger till en rad i Dataviewgrid.
-             
+
+                     }
+                 }
+                 else
+                 {
+                     MessageBox.Show("Det måste finnas värden i alla rutor");
+                 }
+
+             }
+             catch( UserException exception)
+             {
+                 MessageBox.Show(exception.Message);
+             }*/
+
+            //Hur man lägger till en rad i Dataviewgrid.
+
             string[] row1 = new string[] { "avsnitt1", "namn", "url", "frekvens", "kategori" };
             string[] row2 = new string[] { "avsnitt2", "namn", "url", "frekvens", "kategori" };
 
@@ -83,6 +92,65 @@ namespace PodcastApp
                 MessageBox.Show("Kan inte ta bort vald rad, välj raden och försök igen");
             }
         }
+
+        //Metoder för kategorier.
+        private void btnNyKategori_Click(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtValdKategori.Text))
+            {
+                string kategoriNamn = txtValdKategori.Text;
+                if (ValideringAvEntities.KorrektNamn(kategoriNamn))
+                {
+                    //KategoriController.SkapaKategoriObjekt(kategoriNamn);
+                    lstKategorier.Items.Add(kategoriNamn);
+                    txtValdKategori.Text = "";
+                }
+            }
+        }
+
+        private void btnSparaKategori_Click(object sender, EventArgs e)
+        {
+            
+            if (lstKategorier.SelectedItems.Count > 0)
+            {   
+                string gamlaKategorin = lstKategorier.SelectedItem.ToString();
+                string nyKategori = txtValdKategori.Text;
+                 
+                lstKategorier.Items.Insert(lstKategorier.SelectedIndex, nyKategori);
+                lstKategorier.Items.Remove(lstKategorier.SelectedItem);
+                //KategoriController.UppdateraKategoriObjekt(kategoriNamn);
+            }
+        }
+
+        private void lstKategorier_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(lstKategorier.SelectedItem != null)
+            txtValdKategori.Text = lstKategorier.SelectedItem.ToString();
+        }
+
+        private void btnTaBortKategori_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string kategoriNamn;
+                if (DialogResult.Yes == MessageBox.Show
+                   ("Vill du ta bort kategorin och alla tillhörande poddar?", "Confirmation",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
+                {
+                    //List<Feed> allaFeeds = FeedController.DeletebyKategori(kategoriNamn);
+                }
+                
+            }
+            catch (InvalidOperationException ex)
+            {
+                MessageBox.Show("Kan inte ta bort valda poddar, välj kategori och försök igen");
+            }
+        }
+
+
+        // string text = listBox1.GetItemText(listBox1.SelectedItem);
+
+        // comboBox1.Items.Remove(comboBox1.SelectedItem);
 
     }
 }

@@ -10,6 +10,5 @@ namespace Entities
     {
         // En lista där man kan hämta avsnitt via tex Namn
         public string Namn { get; set; }
-        public int Nummer { get; set; }
     }
 }

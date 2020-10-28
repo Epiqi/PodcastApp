@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblURL = new System.Windows.Forms.Label();
             this.lblUppdateringsf = new System.Windows.Forms.Label();
             this.lblKategori = new System.Windows.Forms.Label();
@@ -192,6 +192,7 @@
             this.lstKategorier.Name = "lstKategorier";
             this.lstKategorier.Size = new System.Drawing.Size(389, 251);
             this.lstKategorier.TabIndex = 14;
+            this.lstKategorier.SelectedIndexChanged += new System.EventHandler(this.lstKategorier_SelectedIndexChanged);
             // 
             // txtValdKategori
             // 
@@ -209,6 +210,7 @@
             this.btnNyKategori.TabIndex = 16;
             this.btnNyKategori.Text = "Ny...";
             this.btnNyKategori.UseVisualStyleBackColor = true;
+            this.btnNyKategori.Click += new System.EventHandler(this.btnNyKategori_Click);
             // 
             // btnSparaKategori
             // 
@@ -219,6 +221,7 @@
             this.btnSparaKategori.TabIndex = 17;
             this.btnSparaKategori.Text = "Spara";
             this.btnSparaKategori.UseVisualStyleBackColor = true;
+            this.btnSparaKategori.Click += new System.EventHandler(this.btnSparaKategori_Click);
             // 
             // btnTaBortKategori
             // 
@@ -229,6 +232,7 @@
             this.btnTaBortKategori.TabIndex = 18;
             this.btnTaBortKategori.Text = "Ta bort...";
             this.btnTaBortKategori.UseVisualStyleBackColor = true;
+            this.btnTaBortKategori.Click += new System.EventHandler(this.btnTaBortKategori_Click);
             // 
             // lblRubrikPodcastInfo
             // 
@@ -257,14 +261,14 @@
             this.podcastDataGridView.AllowUserToDeleteRows = false;
             this.podcastDataGridView.AllowUserToResizeColumns = false;
             this.podcastDataGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.ButtonFace;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.podcastDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.ButtonFace;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.podcastDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
             this.podcastDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.podcastDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnAvsnitt,
@@ -324,8 +328,8 @@
             // 
             // ColumnAvsnitt
             // 
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.ColumnAvsnitt.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.ColumnAvsnitt.DefaultCellStyle = dataGridViewCellStyle18;
             this.ColumnAvsnitt.HeaderText = "Avsnitt";
             this.ColumnAvsnitt.Name = "ColumnAvsnitt";
             this.ColumnAvsnitt.ReadOnly = true;
