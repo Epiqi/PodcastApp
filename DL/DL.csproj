@@ -49,8 +49,10 @@
     <Compile Include="GeneralReader.cs" />
     <Compile Include="DataManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AvsnittRepository.cs" />
     <Compile Include="Repositories\FeedRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
+    <Compile Include="Repositories\KategoriRepository.cs" />
     <Compile Include="RSSReader.cs" />
     <Compile Include="UserDataReader.cs" />
     <Compile Include="UserDataWriter.cs" />
