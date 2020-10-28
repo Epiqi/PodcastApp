@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblURL = new System.Windows.Forms.Label();
             this.lblUppdateringsf = new System.Windows.Forms.Label();
             this.lblKategori = new System.Windows.Forms.Label();
@@ -49,7 +49,7 @@
             this.btnTaBortKategori = new System.Windows.Forms.Button();
             this.lblRubrikPodcastInfo = new System.Windows.Forms.Label();
             this.lblPodcastBeskrivning = new System.Windows.Forms.Label();
-            this.podcastInfoGridView = new System.Windows.Forms.DataGridView();
+            this.podcastDataGridView = new System.Windows.Forms.DataGridView();
             this.lblNamn = new System.Windows.Forms.Label();
             this.txtNamn = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -57,9 +57,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.ColumnAvsnitt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnNamn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnURL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnFrekvens = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnKategori = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.podcastInfoGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.podcastDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // lblURL
@@ -142,6 +143,7 @@
             this.btnSparaNyaVardenFeed.TabIndex = 8;
             this.btnSparaNyaVardenFeed.Text = "Spara";
             this.btnSparaNyaVardenFeed.UseVisualStyleBackColor = true;
+            this.btnSparaNyaVardenFeed.Click += new System.EventHandler(this.btnSparaNyaVardenFeed_Click);
             // 
             // btnTaBort
             // 
@@ -152,6 +154,7 @@
             this.btnTaBort.TabIndex = 9;
             this.btnTaBort.Text = "Ta bort...";
             this.btnTaBort.UseVisualStyleBackColor = true;
+            this.btnTaBort.Click += new System.EventHandler(this.btnTaBort_Click);
             // 
             // lblAvsnitt
             // 
@@ -159,9 +162,9 @@
             this.lblAvsnitt.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAvsnitt.Location = new System.Drawing.Point(27, 433);
             this.lblAvsnitt.Name = "lblAvsnitt";
-            this.lblAvsnitt.Size = new System.Drawing.Size(54, 19);
+            this.lblAvsnitt.Size = new System.Drawing.Size(61, 19);
             this.lblAvsnitt.TabIndex = 10;
-            this.lblAvsnitt.Text = "label4";
+            this.lblAvsnitt.Text = "Avsnitt";
             // 
             // lstAvsnitt
             // 
@@ -248,32 +251,33 @@
             this.lblPodcastBeskrivning.TabIndex = 20;
             this.lblPodcastBeskrivning.Text = "label7";
             // 
-            // podcastInfoGridView
+            // podcastDataGridView
             // 
-            this.podcastInfoGridView.AllowUserToAddRows = false;
-            this.podcastInfoGridView.AllowUserToDeleteRows = false;
-            this.podcastInfoGridView.AllowUserToResizeColumns = false;
-            this.podcastInfoGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.ButtonFace;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.podcastInfoGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            this.podcastInfoGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.podcastInfoGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.podcastDataGridView.AllowUserToAddRows = false;
+            this.podcastDataGridView.AllowUserToDeleteRows = false;
+            this.podcastDataGridView.AllowUserToResizeColumns = false;
+            this.podcastDataGridView.AllowUserToResizeRows = false;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.ButtonFace;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.podcastDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.podcastDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.podcastDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnAvsnitt,
             this.ColumnNamn,
+            this.ColumnURL,
             this.ColumnFrekvens,
             this.ColumnKategori});
-            this.podcastInfoGridView.Location = new System.Drawing.Point(26, 22);
-            this.podcastInfoGridView.Name = "podcastInfoGridView";
-            this.podcastInfoGridView.ReadOnly = true;
-            this.podcastInfoGridView.RowHeadersVisible = false;
-            this.podcastInfoGridView.Size = new System.Drawing.Size(714, 272);
-            this.podcastInfoGridView.TabIndex = 21;
+            this.podcastDataGridView.Location = new System.Drawing.Point(26, 22);
+            this.podcastDataGridView.Name = "podcastDataGridView";
+            this.podcastDataGridView.ReadOnly = true;
+            this.podcastDataGridView.RowHeadersVisible = false;
+            this.podcastDataGridView.Size = new System.Drawing.Size(714, 272);
+            this.podcastDataGridView.TabIndex = 21;
             // 
             // lblNamn
             // 
@@ -320,11 +324,12 @@
             // 
             // ColumnAvsnitt
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.ColumnAvsnitt.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.ColumnAvsnitt.DefaultCellStyle = dataGridViewCellStyle10;
             this.ColumnAvsnitt.HeaderText = "Avsnitt";
             this.ColumnAvsnitt.Name = "ColumnAvsnitt";
             this.ColumnAvsnitt.ReadOnly = true;
+            this.ColumnAvsnitt.Width = 60;
             // 
             // ColumnNamn
             // 
@@ -333,16 +338,23 @@
             this.ColumnNamn.Name = "ColumnNamn";
             this.ColumnNamn.ReadOnly = true;
             // 
+            // ColumnURL
+            // 
+            this.ColumnURL.HeaderText = "URL";
+            this.ColumnURL.Name = "ColumnURL";
+            this.ColumnURL.ReadOnly = true;
+            this.ColumnURL.Width = 270;
+            // 
             // ColumnFrekvens
             // 
             this.ColumnFrekvens.HeaderText = "Frekvens";
             this.ColumnFrekvens.Name = "ColumnFrekvens";
             this.ColumnFrekvens.ReadOnly = true;
-            this.ColumnFrekvens.Width = 150;
+            this.ColumnFrekvens.Width = 70;
             // 
             // ColumnKategori
             // 
-            this.ColumnKategori.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnKategori.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.ColumnKategori.HeaderText = "Kategori";
             this.ColumnKategori.Name = "ColumnKategori";
             this.ColumnKategori.ReadOnly = true;
@@ -356,7 +368,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtNamn);
             this.Controls.Add(this.lblNamn);
-            this.Controls.Add(this.podcastInfoGridView);
+            this.Controls.Add(this.podcastDataGridView);
             this.Controls.Add(this.lblPodcastBeskrivning);
             this.Controls.Add(this.lblRubrikPodcastInfo);
             this.Controls.Add(this.btnTaBortKategori);
@@ -381,7 +393,7 @@
             this.Name = "Podcast_app";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Podcast app";
-            ((System.ComponentModel.ISupportInitialize)(this.podcastInfoGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.podcastDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -408,7 +420,7 @@
         private System.Windows.Forms.Button btnTaBortKategori;
         private System.Windows.Forms.Label lblRubrikPodcastInfo;
         private System.Windows.Forms.Label lblPodcastBeskrivning;
-        private System.Windows.Forms.DataGridView podcastInfoGridView;
+        private System.Windows.Forms.DataGridView podcastDataGridView;
         private System.Windows.Forms.Label lblNamn;
         private System.Windows.Forms.TextBox txtNamn;
         private System.Windows.Forms.Label label1;
@@ -416,6 +428,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAvsnitt;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNamn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnURL;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnFrekvens;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnKategori;
     }
