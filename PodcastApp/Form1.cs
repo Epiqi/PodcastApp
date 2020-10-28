@@ -3,18 +3,25 @@ using System.Windows.Forms;
 using BL.Validering;
 using BL.Controllers;
 using System.Collections.Generic;
+using Entities;
 
 namespace PodcastApp
 {
     public partial class Podcast_app : Form
     {
         FeedController feedController;
+        KategoriController kategoriController;
+        AvsnittController avsnittController;
+
         public Podcast_app()
         {
             InitializeComponent();
             feedController = new FeedController();
-        }
+            kategoriController = new KategoriController();
+            avsnittController = new AvsnittController();
 
+        }
+        // Metoder för feeds
         private void btnNyFeed_Click(object sender, System.EventArgs e)
         {
             try
@@ -84,6 +91,65 @@ namespace PodcastApp
                 MessageBox.Show("Kan inte ta bort vald rad, välj raden och försök igen");
             }
         }
+
+        //Metoder för kategorier.
+        private void btnNyKategori_Click(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtValdKategori.Text))
+            {
+                string kategoriNamn = txtValdKategori.Text;
+                if (ValideringAvEntities.KorrektNamn(kategoriNamn))
+                {
+                    //KategoriController.SkapaKategoriObjekt(kategoriNamn);
+                    lstKategorier.Items.Add(kategoriNamn);
+                    txtValdKategori.Text = "";
+                }
+            }
+        }
+
+        private void btnSparaKategori_Click(object sender, EventArgs e)
+        {
+
+            if (lstKategorier.SelectedItems.Count > 0)
+            {
+                string gamlaKategorin = lstKategorier.SelectedItem.ToString();
+                string nyKategori = txtValdKategori.Text;
+
+                lstKategorier.Items.Insert(lstKategorier.SelectedIndex, nyKategori);
+                lstKategorier.Items.Remove(lstKategorier.SelectedItem);
+                //KategoriController.UppdateraKategoriObjekt(kategoriNamn);
+            }
+        }
+
+        private void lstKategorier_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lstKategorier.SelectedItem != null)
+                txtValdKategori.Text = lstKategorier.SelectedItem.ToString();
+        }
+
+        private void btnTaBortKategori_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string kategoriNamn;
+                if (DialogResult.Yes == MessageBox.Show
+                   ("Vill du ta bort kategorin och alla tillhörande poddar?", "Confirmation",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
+                {
+                    //List<Feed> allaFeeds = FeedController.DeletebyKategori(kategoriNamn);
+                }
+
+            }
+            catch (InvalidOperationException ex)
+            {
+                MessageBox.Show("Kan inte ta bort valda poddar, välj kategori och försök igen");
+            }
+        }
+
+
+        // string text = listBox1.GetItemText(listBox1.SelectedItem);
+
+        // comboBox1.Items.Remove(comboBox1.SelectedItem);
 
     }
 }
