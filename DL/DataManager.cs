@@ -15,7 +15,7 @@ namespace DL
         {
             XmlSerializer xmlSerializer = new XmlSerializer(feedList.GetType());
 
-            using (FileStream utFile = new FileStream("pod.xml", FileMode.Create, FileAccess.Write))
+            using (FileStream utFile = new FileStream("podcast.xml", FileMode.Create, FileAccess.Write))
             {
                 xmlSerializer.Serialize(utFile, feedList);
             }
@@ -26,7 +26,7 @@ namespace DL
             List<Feed> toBeReturned;
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Feed>));
 
-            using (FileStream inFile = new FileStream("pod.xml", FileMode.Open, FileAccess.Read))
+            using (FileStream inFile = new FileStream("podcast.xml", FileMode.Open, FileAccess.Read))
             {
                 toBeReturned = (List<Feed>)xmlSerializer.Deserialize(inFile);
             }
