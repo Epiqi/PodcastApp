@@ -25,7 +25,7 @@ namespace DL
         {
             Feed podcast = new Feed();
             podcast.Url = url;
-            List<Avsnitt> allaAvsnitt = new List<Avsnitt>();
+            podcast.Avsnitten = new List<Avsnitt>();
 
             XmlReaderSettings xmlsettings = new XmlReaderSettings();
             xmlsettings.Async = true;
@@ -39,21 +39,21 @@ namespace DL
 
                 int counter = 1;
 
-                while (await reader.ReadAsync())
-                {
-                    foreach (SyndicationItem avsn in nyFeed.Items)
-                    {
-                        Avsnitt avsnitt = new Avsnitt();
-                        avsnitt.Namn = avsn.Title.Text;
-                        avsnitt.Beskrivning = avsn.Summary.Text;
-                        avsnitt.Nummer = counter;
 
-                        allaAvsnitt.Add(avsnitt);
-                        counter++;
-                    }
+                foreach (SyndicationItem avsn in nyFeed.Items)
+                {
+                    Avsnitt avsnitt = new Avsnitt();
+                    avsnitt.Namn = avsn.Title.Text;
+                    if (avsn.Summary != null)
+                        avsnitt.Beskrivning = avsn.Summary.Text;
+                    avsnitt.Nummer = counter;
+
+                    podcast.Avsnitten.Add(avsnitt);
+                    counter++;
                 }
+
             }
-            podcast.Avsnitten = allaAvsnitt;
+            // podcast.Avsnitten = allaAvsnitt;
             return podcast;
         }
     }

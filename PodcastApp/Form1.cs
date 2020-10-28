@@ -33,8 +33,9 @@ namespace PodcastApp
                     {
                         //När vi fått URL måste vi läsa in och hämta antal avsnitt innan ett objekt kan skapas
                         feedController.SkapaFeedObjekt(namn, url, frekvens, kategori);
-                        Entities.Feed ny = feedController.GetFeed(namn);
-                        podcastDataGridView.Rows.Add(new string[] { "1", ny.Namn, ny.Url, ny.UppdateringsTid.ToString(), ny.Kategorier });
+                        Entities.Feed ny = feedController.GetFeed(url);
+                        avsnitt = $"{ny.Avsnitten.Count}";
+                        podcastDataGridView.Rows.Add(new string[] { avsnitt, ny.Namn, ny.Url, ny.UppdateringsTid, ny.Kategorier });
                     }
                 }
                 else
