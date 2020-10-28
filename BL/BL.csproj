@@ -58,6 +58,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DL\DL.csproj">
+      <Project>{6CBB63F5-50DE-48DA-A17C-95C4D54619F3}</Project>
+      <Name>DL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Entities\Entities.csproj">
       <Project>{3416020e-03ad-4181-9a68-85e468d2ee72}</Project>
       <Name>Entities</Name>
