@@ -11,7 +11,6 @@ namespace PodcastApp
     {
         FeedController feedController;
         KategoriController kategoriController;
-        AvsnittController avsnittController;
         ValideringAvEntities validering;
 
         public Podcast_app()
@@ -19,7 +18,6 @@ namespace PodcastApp
             InitializeComponent();
             feedController = new FeedController();
             kategoriController = new KategoriController();
-            avsnittController = new AvsnittController();
             validering = new ValideringAvEntities();
             SkrivUtSparade();
 
@@ -84,12 +82,11 @@ namespace PodcastApp
                     string frekvens = cmbxFrekvens.Text;
                     string kategori = cmbxKategori.Text;
                     List<Feed> feedLista = feedController.GetAll();
+                    List<Kategori> kategoriLista = kategoriController.GetAll();
 
-                if (!String.IsNullOrEmpty(namn) && !String.IsNullOrEmpty(txtURL.Text)
-                    && !String.IsNullOrEmpty(cmbxFrekvens.Text) && !String.IsNullOrEmpty(cmbxKategori.Text))
-                {
-                    if (ValideringAvEntities.KorrektNamn(namn) && ValideringAvEntities.KorrektURL(url)
-                        && ValideringAvEntities.EnFrekvensArVald(frekvens) && ValideringAvEntities.KorrektKategori(kategori))
+
+                    if (validering.EndastEttNamn(feedLista, namn) && validering.KorrektURL(url) && validering.EndastEnURL(feedLista, url)
+                        && validering.EnFrekvensArVald(frekvens) && validering.EndastEttNamn(feedLista, kategori) && validering.KorrektKategori(kategoriLista, kategori)
                     {
                         int antalFeeds = feedController.GetAll().Count;
                         feedController.SkapaFeedObjekt(namn, url, frekvens, kategori);
@@ -98,9 +95,9 @@ namespace PodcastApp
                     }
                 }
                 else
-                    {
-                        MessageBox.Show("Det måste finnas värden i alla rutor");
-                    }
+                {
+                    MessageBox.Show("Det måste finnas värden i alla rutor");
+                }
                 
             }
             catch (UserException exception)

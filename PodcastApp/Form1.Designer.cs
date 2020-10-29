@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblURL = new System.Windows.Forms.Label();
             this.lblUppdateringsf = new System.Windows.Forms.Label();
             this.lblKategori = new System.Windows.Forms.Label();
@@ -61,6 +61,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lblAvsnittNamn = new System.Windows.Forms.Label();
+            this.l = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.podcastDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,10 +69,10 @@
             // 
             this.lblURL.AutoSize = true;
             this.lblURL.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblURL.Location = new System.Drawing.Point(35, 385);
+            this.lblURL.Location = new System.Drawing.Point(22, 315);
             this.lblURL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblURL.Name = "lblURL";
-            this.lblURL.Size = new System.Drawing.Size(57, 24);
+            this.lblURL.Size = new System.Drawing.Size(49, 19);
             this.lblURL.TabIndex = 1;
             this.lblURL.Text = "URL:";
             // 
@@ -79,10 +80,10 @@
             // 
             this.lblUppdateringsf.AutoSize = true;
             this.lblUppdateringsf.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUppdateringsf.Location = new System.Drawing.Point(409, 384);
+            this.lblUppdateringsf.Location = new System.Drawing.Point(307, 315);
             this.lblUppdateringsf.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUppdateringsf.Name = "lblUppdateringsf";
-            this.lblUppdateringsf.Size = new System.Drawing.Size(215, 24);
+            this.lblUppdateringsf.Size = new System.Drawing.Size(176, 19);
             this.lblUppdateringsf.TabIndex = 2;
             this.lblUppdateringsf.Text = "Uppdateringfrekvens:";
             // 
@@ -90,16 +91,16 @@
             // 
             this.lblKategori.AutoSize = true;
             this.lblKategori.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblKategori.Location = new System.Drawing.Point(735, 384);
+            this.lblKategori.Location = new System.Drawing.Point(550, 315);
             this.lblKategori.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblKategori.Name = "lblKategori";
-            this.lblKategori.Size = new System.Drawing.Size(97, 24);
+            this.lblKategori.Size = new System.Drawing.Size(80, 19);
             this.lblKategori.TabIndex = 3;
             this.lblKategori.Text = "Kategori:";
             // 
             // txtURL
             // 
-            this.txtURL.Location = new System.Drawing.Point(29, 339);
+            this.txtURL.Location = new System.Drawing.Point(26, 338);
             this.txtURL.Name = "txtURL";
             this.txtURL.Size = new System.Drawing.Size(255, 20);
             this.txtURL.TabIndex = 4;
@@ -166,7 +167,7 @@
             // 
             this.lblAvsnitt.AutoSize = true;
             this.lblAvsnitt.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAvsnitt.Location = new System.Drawing.Point(27, 433);
+            this.lblAvsnitt.Location = new System.Drawing.Point(27, 436);
             this.lblAvsnitt.Name = "lblAvsnitt";
             this.lblAvsnitt.Size = new System.Drawing.Size(61, 19);
             this.lblAvsnitt.TabIndex = 10;
@@ -256,7 +257,7 @@
             // 
             this.lblPodcastBeskrivning.AutoSize = true;
             this.lblPodcastBeskrivning.BackColor = System.Drawing.Color.White;
-            this.lblPodcastBeskrivning.Location = new System.Drawing.Point(792, 499);
+            this.lblPodcastBeskrivning.Location = new System.Drawing.Point(792, 526);
             this.lblPodcastBeskrivning.Name = "lblPodcastBeskrivning";
             this.lblPodcastBeskrivning.Size = new System.Drawing.Size(35, 13);
             this.lblPodcastBeskrivning.TabIndex = 20;
@@ -268,14 +269,14 @@
             this.podcastDataGridView.AllowUserToDeleteRows = false;
             this.podcastDataGridView.AllowUserToResizeColumns = false;
             this.podcastDataGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.ButtonFace;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.podcastDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ButtonFace;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.podcastDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.podcastDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.podcastDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnAvsnitt,
@@ -294,8 +295,8 @@
             // 
             // ColumnAvsnitt
             // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.ColumnAvsnitt.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.ColumnAvsnitt.DefaultCellStyle = dataGridViewCellStyle4;
             this.ColumnAvsnitt.HeaderText = "Avsnitt";
             this.ColumnAvsnitt.MinimumWidth = 6;
             this.ColumnAvsnitt.Name = "ColumnAvsnitt";
@@ -339,7 +340,7 @@
             // 
             this.lblNamn.AutoSize = true;
             this.lblNamn.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNamn.Location = new System.Drawing.Point(26, 370);
+            this.lblNamn.Location = new System.Drawing.Point(22, 370);
             this.lblNamn.Name = "lblNamn";
             this.lblNamn.Size = new System.Drawing.Size(117, 19);
             this.lblNamn.TabIndex = 22;
@@ -347,7 +348,7 @@
             // 
             // txtNamn
             // 
-            this.txtNamn.Location = new System.Drawing.Point(29, 392);
+            this.txtNamn.Location = new System.Drawing.Point(26, 392);
             this.txtNamn.Name = "txtNamn";
             this.txtNamn.Size = new System.Drawing.Size(255, 20);
             this.txtNamn.TabIndex = 23;
@@ -391,12 +392,24 @@
             this.lblAvsnittNamn.TabIndex = 27;
             this.lblAvsnittNamn.Text = "Avsnitt";
             // 
+            // l
+            // 
+            this.l.AutoSize = true;
+            this.l.BackColor = System.Drawing.Color.White;
+            this.l.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.l.Location = new System.Drawing.Point(792, 500);
+            this.l.Name = "l";
+            this.l.Size = new System.Drawing.Size(47, 16);
+            this.l.TabIndex = 27;
+            this.l.Text = "label6";
+            // 
             // Podcast_app
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(1210, 776);
+            this.Controls.Add(this.l);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtNamn);
             this.Controls.Add(this.lblNamn);
@@ -464,6 +477,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnFrekvens;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnKategori;
         private System.Windows.Forms.Label lblAvsnittNamn;
+        private System.Windows.Forms.Label l;
     }
 }
 

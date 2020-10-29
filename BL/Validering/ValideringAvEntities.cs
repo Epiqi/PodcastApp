@@ -52,7 +52,7 @@ namespace BL.Validering
             }
             return korrekt;
         }
-        public bool KorrektKategori(List<Feed> allaFeeds, string kategori)
+        public bool KorrektKategori(List<Feed> allaKategorier, string kategori)
         {
             // hämta lista och jämför?
             bool korrekt = true;
