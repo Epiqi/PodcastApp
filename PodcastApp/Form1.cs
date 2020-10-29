@@ -22,6 +22,20 @@ namespace PodcastApp
             SkrivUtSparade();
 
         }
+
+        private void podcastDataGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            // Skriv ut avsnitt för vald podcast
+            lstAvsnitt.Items.Clear();
+            string feedUrl = podcastDataGridView.CurrentRow.Cells[2].Value.ToString();
+            Feed valdFeed = feedController.GetFeed(feedUrl);
+            int nummer = 1;
+            foreach (Avsnitt avsnitt in valdFeed.Avsnitten)
+            {
+                lstAvsnitt.Items.Add(nummer++ + ".  " + avsnitt.Beskrivning);
+            }
+        }
+
         // Metoder för feeds
         private void SkrivFeed(string url)
         {
