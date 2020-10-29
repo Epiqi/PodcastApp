@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.ServiceModel.Syndication;
 using System.Xml;
 using Entities;
+using System.Text.RegularExpressions;
 
 namespace DL
 {
@@ -45,7 +46,15 @@ namespace DL
                     Avsnitt avsnitt = new Avsnitt();
                     avsnitt.Namn = avsn.Title.Text;
                     if (avsn.Summary != null)
+                    {
                         avsnitt.Beskrivning = avsn.Summary.Text;
+                    }
+                    else
+                    {
+                        // För vissa RSS-feeds blir SyndicationItem.Summary null och infon hamnar i .Content istället.
+                        TextSyndicationContent text = (TextSyndicationContent)avsn.Content;
+                        avsnitt.Beskrivning = Regex.Replace(text.Text, "<.*?>", String.Empty);
+                    }
                     avsnitt.Nummer = counter;
 
                     podcast.Avsnitten.Add(avsnitt);
