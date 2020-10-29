@@ -27,7 +27,7 @@ namespace PodcastApp
             string feedUrl = podcastDataGridView.CurrentRow.Cells[2].Value.ToString();
             Feed valdFeed = feedController.GetFeed(feedUrl);
             lblRubrikPodcastInfo.Text = valdFeed.Namn + ".";
-            lblAvsnittNamn.Text = valdFeed.Avsnitten[lstAvsnitt.SelectedIndex].Namn;
+            lblPodAvsnitt.Text = valdFeed.Avsnitten[lstAvsnitt.SelectedIndex].Namn;
             lblPodcastBeskrivning.Text = valdFeed.Avsnitten[lstAvsnitt.SelectedIndex].Beskrivning;
         }
         private void podcastDataGridView_SelectionChanged(object sender, EventArgs e)
@@ -53,7 +53,7 @@ namespace PodcastApp
 
         }
 
-        
+
         private void SkrivFeed(string url)
         {
             string avsnitt = ""; //Hämta värde från rss-feed.
@@ -98,7 +98,7 @@ namespace PodcastApp
                 {
                     MessageBox.Show("Det måste finnas värden i alla rutor");
                 }
-                
+
             }
             catch (UserException exception)
             {
@@ -134,7 +134,7 @@ namespace PodcastApp
             }
         }
 
-       
+
         private void btnNyKategori_Click(object sender, EventArgs e)
         {
             if (!String.IsNullOrEmpty(txtValdKategori.Text))
@@ -195,7 +195,7 @@ namespace PodcastApp
         }
 
 
-      
+
 
     }
 }
