@@ -284,7 +284,9 @@
             this.ColumnURL,
             this.ColumnFrekvens,
             this.ColumnKategori});
-            this.podcastDataGridView.Location = new System.Drawing.Point(26, 22);
+            this.podcastDataGridView.Location = new System.Drawing.Point(52, 42);
+            this.podcastDataGridView.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.podcastDataGridView.MultiSelect = false;
             this.podcastDataGridView.Name = "podcastDataGridView";
             this.podcastDataGridView.ReadOnly = true;
             this.podcastDataGridView.RowHeadersVisible = false;
@@ -439,6 +441,7 @@
             this.Name = "Podcast_app";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Podcast app";
+            this.Load += new System.EventHandler(this.Podcast_app_Load);
             ((System.ComponentModel.ISupportInitialize)(this.podcastDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
