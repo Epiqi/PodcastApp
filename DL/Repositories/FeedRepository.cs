@@ -28,6 +28,7 @@ namespace DL.Repositories
         public void Delete(int index)
         {
             feeds.RemoveAt(index);
+            SaveChanges();
         }
 
         public List<Feed> GetAll()
