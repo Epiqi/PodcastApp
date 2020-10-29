@@ -11,32 +11,49 @@ namespace PodcastApp
     {
         FeedController feedController;
         KategoriController kategoriController;
-        AvsnittController avsnittController;
+        ValideringAvEntities validering;
 
         public Podcast_app()
         {
             InitializeComponent();
             feedController = new FeedController();
             kategoriController = new KategoriController();
-            avsnittController = new AvsnittController();
+            validering = new ValideringAvEntities();
             SkrivUtSparade();
 
         }
-
+        private void lstAvsnitt_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string feedUrl = podcastDataGridView.CurrentRow.Cells[2].Value.ToString();
+            Feed valdFeed = feedController.GetFeed(feedUrl);
+            lblRubrikPodcastInfo.Text = valdFeed.Namn + ".";
+            lblAvsnittNamn.Text = valdFeed.Avsnitten[lstAvsnitt.SelectedIndex].Namn;
+            lblPodcastBeskrivning.Text = valdFeed.Avsnitten[lstAvsnitt.SelectedIndex].Beskrivning;
+        }
         private void podcastDataGridView_SelectionChanged(object sender, EventArgs e)
         {
+            if (podcastDataGridView.Rows.Count > 0)
+            {
+                txtNamn.Text = podcastDataGridView.CurrentRow.Cells[1].Value.ToString();
+                txtURL.Text = podcastDataGridView.CurrentRow.Cells[2].Value.ToString();
+                cmbxFrekvens.Text = podcastDataGridView.CurrentRow.Cells[3].Value.ToString();
+                cmbxKategori.Text = podcastDataGridView.CurrentRow.Cells[4].Value.ToString();
+            }
+
             // Skriv ut avsnitt för vald podcast
             lstAvsnitt.Items.Clear();
             string feedUrl = podcastDataGridView.CurrentRow.Cells[2].Value.ToString();
             Feed valdFeed = feedController.GetFeed(feedUrl);
-            int nummer = 1;
+            lblRubrikPodcastInfo.Text = valdFeed.Namn;
+            lblPodcastBeskrivning.Text = valdFeed.Beskrivning;
             foreach (Avsnitt avsnitt in valdFeed.Avsnitten)
             {
-                lstAvsnitt.Items.Add(nummer++ + ".  " + avsnitt.Beskrivning);
+                lstAvsnitt.Items.Add(valdFeed.Namn + ". Avsnitt " + avsnitt.Nummer + ". " + avsnitt.Namn);
             }
+
         }
 
-        // Metoder för feeds
+        
         private void SkrivFeed(string url)
         {
             string avsnitt = ""; //Hämta värde från rss-feed.
@@ -55,44 +72,39 @@ namespace PodcastApp
         {
             try
             {
-                string namn = txtNamn.Text;
-                string url = txtURL.Text;
-                string frekvens = cmbxFrekvens.Text;
-                string kategori = cmbxKategori.Text;
 
-                if (!String.IsNullOrEmpty(namn) && !String.IsNullOrEmpty(txtURL.Text)
+
+                if (!String.IsNullOrEmpty(txtNamn.Text) && !String.IsNullOrEmpty(txtURL.Text)
                     && !String.IsNullOrEmpty(cmbxFrekvens.Text) && !String.IsNullOrEmpty(cmbxKategori.Text))
                 {
-                    if (ValideringAvEntities.KorrektNamn(namn) && ValideringAvEntities.KorrektURL(url)
-                        && ValideringAvEntities.EnFrekvensArVald(frekvens) && ValideringAvEntities.KorrektKategori(kategori))
+                    string namn = txtNamn.Text;
+                    string url = txtURL.Text;
+                    string frekvens = cmbxFrekvens.Text;
+                    string kategori = cmbxKategori.Text;
+                    List<Feed> feedLista = feedController.GetAll();
+                    List<Kategori> kategoriLista = kategoriController.GetAll();
+
+
+                    if (validering.EndastEttNamn(feedLista, namn) && validering.KorrektURL(url) && validering.EndastEnURL(feedLista, url)
+                        && validering.EnFrekvensArVald(frekvens) && validering.EndastEttNamn(feedLista, kategori) && validering.KorrektKategori(kategoriLista, kategori))
                     {
-                        //När vi fått URL måste vi läsa in och hämta antal avsnitt innan ett objekt kan skapas
+                        int antalFeeds = feedController.GetAll().Count;
                         feedController.SkapaFeedObjekt(namn, url, frekvens, kategori);
-                        SkrivFeed(url);
+                        if (feedController.GetAll().Count > antalFeeds)
+                            SkrivFeed(url);
                     }
                 }
                 else
                 {
                     MessageBox.Show("Det måste finnas värden i alla rutor");
                 }
-
+                
             }
             catch (UserException exception)
             {
                 MessageBox.Show(exception.Message);
             }
 
-            //Hur man lägger till en rad i Dataviewgrid.
-            /*
-            string[] row1 = new string[] { "avsnitt1", "namn", "url", "frekvens", "kategori" };
-            string[] row2 = new string[] { "avsnitt2", "namn", "url", "frekvens", "kategori" };
-
-            List<Object> rows = new List<Object> { row1, row2 };
-            foreach (string[] rowArray in rows)
-            {
-                podcastDataGridView.Rows.Add(rowArray);
-            }
-            */
         }
 
         private void btnSparaNyaVardenFeed_Click(object sender, EventArgs e)
@@ -122,13 +134,15 @@ namespace PodcastApp
             }
         }
 
-        //Metoder för kategorier.
+       
         private void btnNyKategori_Click(object sender, EventArgs e)
         {
             if (!String.IsNullOrEmpty(txtValdKategori.Text))
             {
                 string kategoriNamn = txtValdKategori.Text;
-                if (ValideringAvEntities.KorrektNamn(kategoriNamn))
+                List<Feed> feedLista = feedController.GetAll();
+
+                if (validering.EndastEttNamn(feedLista, kategoriNamn))
                 {
                     //KategoriController.SkapaKategoriObjekt(kategoriNamn);
                     lstKategorier.Items.Add(kategoriNamn);
@@ -147,7 +161,7 @@ namespace PodcastApp
 
                 lstKategorier.Items.Insert(lstKategorier.SelectedIndex, nyKategori);
                 lstKategorier.Items.Remove(lstKategorier.SelectedItem);
-                //KategoriController.UppdateraKategoriObjekt(kategoriNamn);
+                //kategoriController.UppdateraKategoriObjekt(kategoriNamn);
             }
         }
 
@@ -161,25 +175,27 @@ namespace PodcastApp
         {
             try
             {
-                string kategoriNamn;
-                if (DialogResult.Yes == MessageBox.Show
+                if (!String.IsNullOrEmpty(txtValdKategori.Text))
+                {
+                    string kategoriNamn = txtValdKategori.Text;
+
+                    if (DialogResult.Yes == MessageBox.Show
                    ("Vill du ta bort kategorin och alla tillhörande poddar?", "Confirmation",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
-                {
-                    //List<Feed> allaFeeds = FeedController.DeletebyKategori(kategoriNamn);
-                }
+                    {
 
+                        feedController.DeleteByKategori(kategoriNamn);
+                    }
+                }
             }
-            catch (InvalidOperationException ex)
+            catch (InvalidOperationException ex) //gör nytt eget exeption
             {
                 MessageBox.Show("Kan inte ta bort valda poddar, välj kategori och försök igen");
             }
         }
 
 
-        // string text = listBox1.GetItemText(listBox1.SelectedItem);
-
-        // comboBox1.Items.Remove(comboBox1.SelectedItem);
+      
 
     }
 }

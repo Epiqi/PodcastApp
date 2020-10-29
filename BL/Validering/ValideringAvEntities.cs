@@ -1,18 +1,23 @@
 ﻿using BL.Validering;
+using Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
 
 namespace BL.Validering
 {
-    public static class ValideringAvEntities 
+    public class ValideringAvEntities 
     {
-        
+        public ValideringAvEntities()
+        {
+                
+        }
 
-        public static bool KorrektURL(string urlAdress)
+        public bool KorrektURL(string urlAdress)
         {
             Uri uriResult;
             bool korrekt = Uri.TryCreate(urlAdress, UriKind.Absolute, out uriResult)
@@ -24,8 +29,21 @@ namespace BL.Validering
             return korrekt;    
         }
 
+        public bool EndastEnURL(List<Feed> allaFeeds, string url) 
+        {
+            bool korrekt = true;
+            foreach (Feed feed in allaFeeds)
+            {
+                if(string.Equals(url, feed.Url, StringComparison.OrdinalIgnoreCase))
+                    {
+                    korrekt = false;
+                    }
+            }
 
-        public static bool EnFrekvensArVald(string frekvens) 
+            return korrekt;
+        }
+
+        public bool EnFrekvensArVald(string frekvens) 
         {
             bool korrekt = Int32.TryParse(frekvens, out int frekvensArVald);
             if (!korrekt)
@@ -34,30 +52,38 @@ namespace BL.Validering
             }
             return korrekt;
         }
-        public static bool KorrektKategori(string enKategori)
+        public bool KorrektKategori(List<Kategori> allaKategorier, string kategoriNamn)
         {
-            // hämta lista och jämför?
             bool korrekt = true;
-            if (!korrekt)
+            foreach (Kategori kategori in allaKategorier)
             {
-                throw new UserException("Ingen kategori är vald");
-            }
-            return korrekt;
-        }
-
-        public static bool KorrektNamn(string ettNamn)
-        {
-            // hämta lista och jämför så inte namnet finns redan?
-            bool korrekt = true;
-            if (!korrekt)
-            {
-                throw new UserException("Namnet du valt används redan");
+                if (string.Equals(kategoriNamn, kategori.Namn, StringComparison.OrdinalIgnoreCase))
+                {
+                    korrekt = false;
+                    throw new UserException("Ingen kategori är vald");
+                }
             }
             return korrekt;
         }
 
 
-        private static void VisaMeddelande(string message)
+        public bool EndastEttNamn(List<Feed> allaFeeds, string feedNamn)
+        {
+            bool korrekt = true;
+            foreach (Feed feed in allaFeeds)
+            {
+                if (string.Equals(feedNamn, feed.Namn, StringComparison.OrdinalIgnoreCase))
+                {
+                    korrekt = false;
+                    throw new UserException("Namnet du valt används redan");
+                }
+            }
+
+            return korrekt;
+        }
+
+
+        private void VisaMeddelande(string message)
         {
             System.Windows.Forms.MessageBox.Show(message);
         }
