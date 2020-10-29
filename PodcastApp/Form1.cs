@@ -24,7 +24,14 @@ namespace PodcastApp
             SkrivUtSparade();
 
         }
-
+        private void lstAvsnitt_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string feedUrl = podcastDataGridView.CurrentRow.Cells[2].Value.ToString();
+            Feed valdFeed = feedController.GetFeed(feedUrl);
+            lblRubrikPodcastInfo.Text = valdFeed.Namn + ".";
+            lblAvsnittNamn.Text = valdFeed.Avsnitten[lstAvsnitt.SelectedIndex].Namn;
+            lblPodcastBeskrivning.Text = valdFeed.Avsnitten[lstAvsnitt.SelectedIndex].Beskrivning;
+        }
         private void podcastDataGridView_SelectionChanged(object sender, EventArgs e)
         {
             if (podcastDataGridView.Rows.Count > 0)
@@ -39,11 +46,13 @@ namespace PodcastApp
             lstAvsnitt.Items.Clear();
             string feedUrl = podcastDataGridView.CurrentRow.Cells[2].Value.ToString();
             Feed valdFeed = feedController.GetFeed(feedUrl);
-            int nummer = 1;
+            lblRubrikPodcastInfo.Text = valdFeed.Namn;
+            lblPodcastBeskrivning.Text = valdFeed.Beskrivning;
             foreach (Avsnitt avsnitt in valdFeed.Avsnitten)
             {
-                lstAvsnitt.Items.Add(nummer++ + ".  " + avsnitt.Beskrivning);
+                lstAvsnitt.Items.Add(valdFeed.Namn + ". Avsnitt " + avsnitt.Nummer + ". " + avsnitt.Namn);
             }
+
         }
 
         
@@ -76,12 +85,17 @@ namespace PodcastApp
                     string kategori = cmbxKategori.Text;
                     List<Feed> feedLista = feedController.GetAll();
 
-                    if (validering.EndastEttNamn(feedLista, namn) && validering.KorrektURL(url) && validering.EndastEnURL(feedLista, url)
-                            && validering.EnFrekvensArVald(frekvens)/* && validering.KorrektKategori(kategori)*/)
-                        {
-                            feedController.SkapaFeedObjekt(namn, url, frekvens, kategori);
+                if (!String.IsNullOrEmpty(namn) && !String.IsNullOrEmpty(txtURL.Text)
+                    && !String.IsNullOrEmpty(cmbxFrekvens.Text) && !String.IsNullOrEmpty(cmbxKategori.Text))
+                {
+                    if (ValideringAvEntities.KorrektNamn(namn) && ValideringAvEntities.KorrektURL(url)
+                        && ValideringAvEntities.EnFrekvensArVald(frekvens) && ValideringAvEntities.KorrektKategori(kategori))
+                    {
+                        int antalFeeds = feedController.GetAll().Count;
+                        feedController.SkapaFeedObjekt(namn, url, frekvens, kategori);
+                        if (feedController.GetAll().Count > antalFeeds)
                             SkrivFeed(url);
-                        }
+                    }
                 }
                 else
                     {

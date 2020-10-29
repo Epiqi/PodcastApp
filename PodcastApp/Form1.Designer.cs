@@ -60,6 +60,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.lblAvsnittNamn = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.podcastDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,9 +68,10 @@
             // 
             this.lblURL.AutoSize = true;
             this.lblURL.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblURL.Location = new System.Drawing.Point(26, 313);
+            this.lblURL.Location = new System.Drawing.Point(35, 385);
+            this.lblURL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblURL.Name = "lblURL";
-            this.lblURL.Size = new System.Drawing.Size(49, 19);
+            this.lblURL.Size = new System.Drawing.Size(57, 24);
             this.lblURL.TabIndex = 1;
             this.lblURL.Text = "URL:";
             // 
@@ -77,9 +79,10 @@
             // 
             this.lblUppdateringsf.AutoSize = true;
             this.lblUppdateringsf.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUppdateringsf.Location = new System.Drawing.Point(307, 312);
+            this.lblUppdateringsf.Location = new System.Drawing.Point(409, 384);
+            this.lblUppdateringsf.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUppdateringsf.Name = "lblUppdateringsf";
-            this.lblUppdateringsf.Size = new System.Drawing.Size(176, 19);
+            this.lblUppdateringsf.Size = new System.Drawing.Size(215, 24);
             this.lblUppdateringsf.TabIndex = 2;
             this.lblUppdateringsf.Text = "Uppdateringfrekvens:";
             // 
@@ -87,9 +90,10 @@
             // 
             this.lblKategori.AutoSize = true;
             this.lblKategori.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblKategori.Location = new System.Drawing.Point(551, 312);
+            this.lblKategori.Location = new System.Drawing.Point(735, 384);
+            this.lblKategori.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblKategori.Name = "lblKategori";
-            this.lblKategori.Size = new System.Drawing.Size(80, 19);
+            this.lblKategori.Size = new System.Drawing.Size(97, 24);
             this.lblKategori.TabIndex = 3;
             this.lblKategori.Text = "Kategori:";
             // 
@@ -175,6 +179,7 @@
             this.lstAvsnitt.Name = "lstAvsnitt";
             this.lstAvsnitt.Size = new System.Drawing.Size(714, 290);
             this.lstAvsnitt.TabIndex = 12;
+            this.lstAvsnitt.SelectedIndexChanged += new System.EventHandler(this.lstAvsnitt_SelectedIndexChanged);
             // 
             // lblKategorier
             // 
@@ -373,6 +378,19 @@
             this.label3.Size = new System.Drawing.Size(2, 725);
             this.label3.TabIndex = 26;
             // 
+            // lblAvsnittNamn
+            // 
+            this.lblAvsnittNamn.AutoSize = true;
+            this.lblAvsnittNamn.BackColor = System.Drawing.Color.White;
+            this.lblAvsnittNamn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAvsnittNamn.Location = new System.Drawing.Point(1584, 942);
+            this.lblAvsnittNamn.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lblAvsnittNamn.MaximumSize = new System.Drawing.Size(600, 0);
+            this.lblAvsnittNamn.Name = "lblAvsnittNamn";
+            this.lblAvsnittNamn.Size = new System.Drawing.Size(102, 30);
+            this.lblAvsnittNamn.TabIndex = 27;
+            this.lblAvsnittNamn.Text = "Avsnitt";
+            // 
             // Podcast_app
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -445,6 +463,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnURL;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnFrekvens;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnKategori;
+        private System.Windows.Forms.Label lblAvsnittNamn;
     }
 }
 

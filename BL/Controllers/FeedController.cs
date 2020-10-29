@@ -1,4 +1,5 @@
-﻿using DL;
+﻿using BL.Validering;
+using DL;
 using DL.Repositories;
 using Entities;
 using System;
@@ -21,11 +22,20 @@ namespace BL.Controllers
 
         public async void SkapaFeedObjekt(string namn, string url, string frekvens, string kategori)
         {
-            Feed pod = await reader.ReadPodcastRSS(url);
-            pod.Namn = namn;
-            pod.Kategorier = kategori;
-            pod.UppdateringsTid = frekvens;
-            feed.Create(pod);
+            try
+            {
+                Feed pod = await reader.ReadPodcastRSS(url);
+                pod.Kategorier = kategori;
+                pod.UppdateringsTid = frekvens;
+                feed.Create(pod);
+            }
+            catch (Exception e)
+            {
+                System.Windows.Forms.MessageBox.Show("URL-fel");
+
+            }
+            //   pod.Namn = namn;
+
         }
 
         public Feed GetFeed(string url)
