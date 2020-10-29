@@ -9,56 +9,57 @@ namespace DL.Repositories
 {
     public class KategoriRepository : IRepository<Kategori>
     {
-        
-            DataManager dataManager;
-            List<Kategori> kategorier;
-            public KategoriRepository()
+
+        DataManager dataManager;
+        List<Kategori> kategorier;
+        public KategoriRepository()
+        {
+            kategorier = new List<Kategori>();
+            dataManager = new DataManager();
+            kategorier = GetAll();
+        }
+
+        public void Create(Kategori entity)
+        {
+            kategorier.Add(entity);
+            SaveChanges();
+        }
+
+        public void Delete(int index)
+        {
+            kategorier.RemoveAt(index);
+            SaveChanges();
+        }
+
+        public List<Kategori> GetAll()
+        {
+            List<Kategori> savedKategorier = new List<Kategori>();
+            try
             {
-                kategorier = new List<Kategori>();
-                dataManager = new DataManager();
-                kategorier = GetAll();
+                savedKategorier = dataManager.KategoriDeserialize();
+            }
+            catch (Exception ex)
+            {
+
             }
 
-            public void Create(Kategori entity)
+            return savedKategorier;
+        }
+
+        public void SaveChanges()
+        {
+            dataManager.Serialize(kategorier);
+        }
+
+        public void Update(int index, Kategori entity)
+        {
+            if (index >= 0)
             {
-                kategorier.Add(entity);
-                SaveChanges();
+                kategorier[index] = entity;
             }
+            SaveChanges();
+        }
 
-            public void Delete(int index)
-            {
-                kategorier.RemoveAt(index);
-            }
 
-            public List<Kategori> GetAll()
-            {
-                List<Kategori> savedKategorier = new List<Kategori>();
-                try
-                {
-                    savedKategorier = dataManager.KategoriDeserialize();
-                }
-                catch (Exception ex)
-                {
-
-                }
-
-                return savedKategorier;
-            }
-
-            public void SaveChanges()
-            {
-                dataManager.Serialize(kategorier);
-            }
-
-            public void Update(int index, Kategori entity)
-            {
-                if (index >= 0)
-                {
-                    kategorier[index] = entity;
-                }
-                SaveChanges();
-            }
-
-        
     }
 }

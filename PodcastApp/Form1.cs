@@ -67,6 +67,12 @@ namespace PodcastApp
         {
             foreach (Feed feed in feedController.GetAll())
                 SkrivFeed(feed.Url);
+
+            foreach (Kategori kategori in kategoriController.GetAll())
+            {
+                lstKategorier.Items.Add(kategori.Namn);
+                cmbxKategori.Items.Add(kategori.Namn);
+            }
         }
 
         private void btnNyFeed_Click(object sender, System.EventArgs e)
@@ -87,7 +93,7 @@ namespace PodcastApp
 
 
                     if (validering.EndastEttNamn(feedLista, namn) && validering.KorrektURL(url) && validering.EndastEnURL(feedLista, url)
-                        && validering.EnFrekvensArVald(frekvens) && validering.EndastEttNamn(feedLista, kategori) && validering.KorrektKategori(kategoriLista, kategori))
+                        && validering.EnFrekvensArVald(frekvens) && validering.KorrektKategori(kategoriLista, kategori))
                     {
                         int antalFeeds = feedController.GetAll().Count;
                         feedController.SkapaFeedObjekt(namn, url, frekvens, kategori);
@@ -185,7 +191,8 @@ namespace PodcastApp
                    ("Vill du ta bort kategorin och alla tillhörande poddar?", "Confirmation",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
                     {
-
+                        lstKategorier.Items.Remove(lstKategorier.SelectedItem);
+                        cmbxKategori.Items.Remove(kategoriNamn);
                         feedController.DeleteByKategori(kategoriNamn);
                         kategoriController.DeleteKategori(kategoriNamn);
                     }
