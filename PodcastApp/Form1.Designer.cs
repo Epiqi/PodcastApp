@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblURL = new System.Windows.Forms.Label();
             this.lblUppdateringsf = new System.Windows.Forms.Label();
             this.lblKategori = new System.Windows.Forms.Label();
@@ -69,10 +69,10 @@
             // 
             this.lblURL.AutoSize = true;
             this.lblURL.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblURL.Location = new System.Drawing.Point(44, 606);
-            this.lblURL.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.lblURL.Location = new System.Drawing.Point(22, 315);
+            this.lblURL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblURL.Name = "lblURL";
-            this.lblURL.Size = new System.Drawing.Size(69, 29);
+            this.lblURL.Size = new System.Drawing.Size(49, 19);
             this.lblURL.TabIndex = 1;
             this.lblURL.Text = "URL:";
             // 
@@ -80,10 +80,10 @@
             // 
             this.lblUppdateringsf.AutoSize = true;
             this.lblUppdateringsf.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUppdateringsf.Location = new System.Drawing.Point(614, 606);
-            this.lblUppdateringsf.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.lblUppdateringsf.Location = new System.Drawing.Point(307, 315);
+            this.lblUppdateringsf.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUppdateringsf.Name = "lblUppdateringsf";
-            this.lblUppdateringsf.Size = new System.Drawing.Size(259, 29);
+            this.lblUppdateringsf.Size = new System.Drawing.Size(176, 19);
             this.lblUppdateringsf.TabIndex = 2;
             this.lblUppdateringsf.Text = "Uppdateringfrekvens:";
             // 
@@ -91,19 +91,18 @@
             // 
             this.lblKategori.AutoSize = true;
             this.lblKategori.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblKategori.Location = new System.Drawing.Point(1100, 606);
-            this.lblKategori.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.lblKategori.Location = new System.Drawing.Point(550, 315);
+            this.lblKategori.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblKategori.Name = "lblKategori";
-            this.lblKategori.Size = new System.Drawing.Size(117, 29);
+            this.lblKategori.Size = new System.Drawing.Size(80, 19);
             this.lblKategori.TabIndex = 3;
             this.lblKategori.Text = "Kategori:";
             // 
             // txtURL
             // 
-            this.txtURL.Location = new System.Drawing.Point(52, 650);
-            this.txtURL.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtURL.Location = new System.Drawing.Point(26, 338);
             this.txtURL.Name = "txtURL";
-            this.txtURL.Size = new System.Drawing.Size(506, 31);
+            this.txtURL.Size = new System.Drawing.Size(255, 20);
             this.txtURL.TabIndex = 4;
             // 
             // cmbxFrekvens
@@ -113,33 +112,28 @@
             "1",
             "5",
             "10"});
-            this.cmbxFrekvens.Location = new System.Drawing.Point(622, 648);
-            this.cmbxFrekvens.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.cmbxFrekvens.Location = new System.Drawing.Point(311, 337);
             this.cmbxFrekvens.Name = "cmbxFrekvens";
-            this.cmbxFrekvens.Size = new System.Drawing.Size(454, 33);
+            this.cmbxFrekvens.Size = new System.Drawing.Size(229, 21);
             this.cmbxFrekvens.TabIndex = 5;
             this.cmbxFrekvens.Text = "Välj uppdateringsfrekvens";
             // 
             // cmbxKategori
             // 
             this.cmbxKategori.FormattingEnabled = true;
-            this.cmbxKategori.Items.AddRange(new object[] {
-            "kärlek"});
-            this.cmbxKategori.Location = new System.Drawing.Point(1108, 648);
-            this.cmbxKategori.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.cmbxKategori.Location = new System.Drawing.Point(554, 337);
             this.cmbxKategori.Name = "cmbxKategori";
             this.cmbxKategori.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.cmbxKategori.Size = new System.Drawing.Size(368, 33);
+            this.cmbxKategori.Size = new System.Drawing.Size(186, 21);
             this.cmbxKategori.TabIndex = 6;
             this.cmbxKategori.Text = "Välj en kategori";
             // 
             // btnNyFeed
             // 
             this.btnNyFeed.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNyFeed.Location = new System.Drawing.Point(828, 750);
-            this.btnNyFeed.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnNyFeed.Location = new System.Drawing.Point(414, 390);
             this.btnNyFeed.Name = "btnNyFeed";
-            this.btnNyFeed.Size = new System.Drawing.Size(150, 44);
+            this.btnNyFeed.Size = new System.Drawing.Size(75, 23);
             this.btnNyFeed.TabIndex = 7;
             this.btnNyFeed.Text = "Ny...";
             this.btnNyFeed.UseVisualStyleBackColor = true;
@@ -148,10 +142,9 @@
             // btnSparaNyaVardenFeed
             // 
             this.btnSparaNyaVardenFeed.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSparaNyaVardenFeed.Location = new System.Drawing.Point(1076, 750);
-            this.btnSparaNyaVardenFeed.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnSparaNyaVardenFeed.Location = new System.Drawing.Point(538, 390);
             this.btnSparaNyaVardenFeed.Name = "btnSparaNyaVardenFeed";
-            this.btnSparaNyaVardenFeed.Size = new System.Drawing.Size(150, 44);
+            this.btnSparaNyaVardenFeed.Size = new System.Drawing.Size(75, 23);
             this.btnSparaNyaVardenFeed.TabIndex = 8;
             this.btnSparaNyaVardenFeed.Text = "Spara";
             this.btnSparaNyaVardenFeed.UseVisualStyleBackColor = true;
@@ -160,10 +153,9 @@
             // btnTaBort
             // 
             this.btnTaBort.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTaBort.Location = new System.Drawing.Point(1330, 750);
-            this.btnTaBort.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnTaBort.Location = new System.Drawing.Point(665, 390);
             this.btnTaBort.Name = "btnTaBort";
-            this.btnTaBort.Size = new System.Drawing.Size(150, 44);
+            this.btnTaBort.Size = new System.Drawing.Size(75, 23);
             this.btnTaBort.TabIndex = 9;
             this.btnTaBort.Text = "Ta bort...";
             this.btnTaBort.UseVisualStyleBackColor = true;
@@ -173,21 +165,18 @@
             // 
             this.lblAvsnitt.AutoSize = true;
             this.lblAvsnitt.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAvsnitt.Location = new System.Drawing.Point(54, 838);
-            this.lblAvsnitt.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lblAvsnitt.Location = new System.Drawing.Point(27, 436);
             this.lblAvsnitt.Name = "lblAvsnitt";
-            this.lblAvsnitt.Size = new System.Drawing.Size(93, 29);
+            this.lblAvsnitt.Size = new System.Drawing.Size(61, 19);
             this.lblAvsnitt.TabIndex = 10;
             this.lblAvsnitt.Text = "Avsnitt";
             // 
             // lstAvsnitt
             // 
             this.lstAvsnitt.FormattingEnabled = true;
-            this.lstAvsnitt.ItemHeight = 25;
-            this.lstAvsnitt.Location = new System.Drawing.Point(52, 881);
-            this.lstAvsnitt.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.lstAvsnitt.Location = new System.Drawing.Point(26, 458);
             this.lstAvsnitt.Name = "lstAvsnitt";
-            this.lstAvsnitt.Size = new System.Drawing.Size(1424, 554);
+            this.lstAvsnitt.Size = new System.Drawing.Size(714, 290);
             this.lstAvsnitt.TabIndex = 12;
             this.lstAvsnitt.SelectedIndexChanged += new System.EventHandler(this.lstAvsnitt_SelectedIndexChanged);
             // 
@@ -196,39 +185,34 @@
             this.lblKategorier.AutoSize = true;
             this.lblKategorier.BackColor = System.Drawing.Color.White;
             this.lblKategorier.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblKategorier.Location = new System.Drawing.Point(1582, 44);
-            this.lblKategorier.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lblKategorier.Location = new System.Drawing.Point(791, 23);
             this.lblKategorier.Name = "lblKategorier";
-            this.lblKategorier.Size = new System.Drawing.Size(139, 29);
+            this.lblKategorier.Size = new System.Drawing.Size(95, 19);
             this.lblKategorier.TabIndex = 13;
             this.lblKategorier.Text = "Kategorier:";
             // 
             // lstKategorier
             // 
             this.lstKategorier.FormattingEnabled = true;
-            this.lstKategorier.ItemHeight = 25;
-            this.lstKategorier.Location = new System.Drawing.Point(1564, 83);
-            this.lstKategorier.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.lstKategorier.Location = new System.Drawing.Point(782, 43);
             this.lstKategorier.Name = "lstKategorier";
-            this.lstKategorier.Size = new System.Drawing.Size(774, 479);
+            this.lstKategorier.Size = new System.Drawing.Size(389, 251);
             this.lstKategorier.TabIndex = 14;
             this.lstKategorier.SelectedIndexChanged += new System.EventHandler(this.lstKategorier_SelectedIndexChanged);
             // 
             // txtValdKategori
             // 
-            this.txtValdKategori.Location = new System.Drawing.Point(1564, 648);
-            this.txtValdKategori.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtValdKategori.Location = new System.Drawing.Point(782, 337);
             this.txtValdKategori.Name = "txtValdKategori";
-            this.txtValdKategori.Size = new System.Drawing.Size(774, 31);
+            this.txtValdKategori.Size = new System.Drawing.Size(389, 20);
             this.txtValdKategori.TabIndex = 15;
             // 
             // btnNyKategori
             // 
             this.btnNyKategori.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNyKategori.Location = new System.Drawing.Point(1564, 750);
-            this.btnNyKategori.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnNyKategori.Location = new System.Drawing.Point(782, 390);
             this.btnNyKategori.Name = "btnNyKategori";
-            this.btnNyKategori.Size = new System.Drawing.Size(226, 44);
+            this.btnNyKategori.Size = new System.Drawing.Size(113, 23);
             this.btnNyKategori.TabIndex = 16;
             this.btnNyKategori.Text = "Ny...";
             this.btnNyKategori.UseVisualStyleBackColor = true;
@@ -237,10 +221,9 @@
             // btnSparaKategori
             // 
             this.btnSparaKategori.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSparaKategori.Location = new System.Drawing.Point(1856, 750);
-            this.btnSparaKategori.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnSparaKategori.Location = new System.Drawing.Point(928, 390);
             this.btnSparaKategori.Name = "btnSparaKategori";
-            this.btnSparaKategori.Size = new System.Drawing.Size(226, 44);
+            this.btnSparaKategori.Size = new System.Drawing.Size(113, 23);
             this.btnSparaKategori.TabIndex = 17;
             this.btnSparaKategori.Text = "Spara";
             this.btnSparaKategori.UseVisualStyleBackColor = true;
@@ -249,10 +232,9 @@
             // btnTaBortKategori
             // 
             this.btnTaBortKategori.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTaBortKategori.Location = new System.Drawing.Point(2116, 750);
-            this.btnTaBortKategori.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnTaBortKategori.Location = new System.Drawing.Point(1058, 390);
             this.btnTaBortKategori.Name = "btnTaBortKategori";
-            this.btnTaBortKategori.Size = new System.Drawing.Size(226, 44);
+            this.btnTaBortKategori.Size = new System.Drawing.Size(113, 23);
             this.btnTaBortKategori.TabIndex = 18;
             this.btnTaBortKategori.Text = "Ta bort...";
             this.btnTaBortKategori.UseVisualStyleBackColor = true;
@@ -263,11 +245,10 @@
             this.lblRubrikPodcastInfo.AutoSize = true;
             this.lblRubrikPodcastInfo.BackColor = System.Drawing.Color.White;
             this.lblRubrikPodcastInfo.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRubrikPodcastInfo.Location = new System.Drawing.Point(1584, 902);
-            this.lblRubrikPodcastInfo.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.lblRubrikPodcastInfo.MaximumSize = new System.Drawing.Size(600, 0);
+            this.lblRubrikPodcastInfo.Location = new System.Drawing.Point(792, 469);
+            this.lblRubrikPodcastInfo.MaximumSize = new System.Drawing.Size(300, 0);
             this.lblRubrikPodcastInfo.Name = "lblRubrikPodcastInfo";
-            this.lblRubrikPodcastInfo.Size = new System.Drawing.Size(65, 24);
+            this.lblRubrikPodcastInfo.Size = new System.Drawing.Size(47, 16);
             this.lblRubrikPodcastInfo.TabIndex = 19;
             this.lblRubrikPodcastInfo.Text = "label6";
             // 
@@ -275,11 +256,10 @@
             // 
             this.lblPodcastBeskrivning.AutoSize = true;
             this.lblPodcastBeskrivning.BackColor = System.Drawing.Color.White;
-            this.lblPodcastBeskrivning.Location = new System.Drawing.Point(1584, 1012);
-            this.lblPodcastBeskrivning.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.lblPodcastBeskrivning.MaximumSize = new System.Drawing.Size(600, 0);
+            this.lblPodcastBeskrivning.Location = new System.Drawing.Point(792, 526);
+            this.lblPodcastBeskrivning.MaximumSize = new System.Drawing.Size(300, 0);
             this.lblPodcastBeskrivning.Name = "lblPodcastBeskrivning";
-            this.lblPodcastBeskrivning.Size = new System.Drawing.Size(70, 25);
+            this.lblPodcastBeskrivning.Size = new System.Drawing.Size(35, 13);
             this.lblPodcastBeskrivning.TabIndex = 20;
             this.lblPodcastBeskrivning.Text = "label7";
             // 
@@ -289,14 +269,14 @@
             this.podcastDataGridView.AllowUserToDeleteRows = false;
             this.podcastDataGridView.AllowUserToResizeColumns = false;
             this.podcastDataGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ButtonFace;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.podcastDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ButtonFace;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.podcastDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.podcastDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.podcastDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnAvsnitt,
@@ -304,20 +284,19 @@
             this.ColumnURL,
             this.ColumnFrekvens,
             this.ColumnKategori});
-            this.podcastDataGridView.Location = new System.Drawing.Point(52, 42);
-            this.podcastDataGridView.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.podcastDataGridView.Location = new System.Drawing.Point(26, 22);
             this.podcastDataGridView.Name = "podcastDataGridView";
             this.podcastDataGridView.ReadOnly = true;
             this.podcastDataGridView.RowHeadersVisible = false;
             this.podcastDataGridView.RowHeadersWidth = 51;
-            this.podcastDataGridView.Size = new System.Drawing.Size(1428, 523);
+            this.podcastDataGridView.Size = new System.Drawing.Size(714, 272);
             this.podcastDataGridView.TabIndex = 21;
             this.podcastDataGridView.SelectionChanged += new System.EventHandler(this.podcastDataGridView_SelectionChanged);
             // 
             // ColumnAvsnitt
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.ColumnAvsnitt.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.ColumnAvsnitt.DefaultCellStyle = dataGridViewCellStyle2;
             this.ColumnAvsnitt.HeaderText = "Avsnitt";
             this.ColumnAvsnitt.MinimumWidth = 6;
             this.ColumnAvsnitt.Name = "ColumnAvsnitt";
@@ -361,48 +340,43 @@
             // 
             this.lblNamn.AutoSize = true;
             this.lblNamn.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNamn.Location = new System.Drawing.Point(44, 712);
-            this.lblNamn.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lblNamn.Location = new System.Drawing.Point(22, 370);
             this.lblNamn.Name = "lblNamn";
-            this.lblNamn.Size = new System.Drawing.Size(173, 29);
+            this.lblNamn.Size = new System.Drawing.Size(117, 19);
             this.lblNamn.TabIndex = 22;
             this.lblNamn.Text = "Namn på pod:";
             // 
             // txtNamn
             // 
-            this.txtNamn.Location = new System.Drawing.Point(52, 754);
-            this.txtNamn.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtNamn.Location = new System.Drawing.Point(26, 392);
             this.txtNamn.Name = "txtNamn";
-            this.txtNamn.Size = new System.Drawing.Size(506, 31);
+            this.txtNamn.Size = new System.Drawing.Size(255, 20);
             this.txtNamn.TabIndex = 23;
             // 
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label1.Location = new System.Drawing.Point(1564, 881);
-            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label1.Location = new System.Drawing.Point(782, 458);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(778, 558);
+            this.label1.Size = new System.Drawing.Size(389, 290);
             this.label1.TabIndex = 24;
             // 
             // label2
             // 
             this.label2.BackColor = System.Drawing.Color.White;
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label2.Location = new System.Drawing.Point(1564, 42);
-            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label2.Location = new System.Drawing.Point(782, 22);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(778, 523);
+            this.label2.Size = new System.Drawing.Size(389, 272);
             this.label2.TabIndex = 25;
             // 
             // label3
             // 
             this.label3.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label3.Location = new System.Drawing.Point(1518, 44);
-            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label3.Location = new System.Drawing.Point(759, 23);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(4, 1394);
+            this.label3.Size = new System.Drawing.Size(2, 725);
             this.label3.TabIndex = 26;
             // 
             // lblAvsnittNamn
@@ -423,20 +397,19 @@
             this.lblPodAvsnitt.AutoSize = true;
             this.lblPodAvsnitt.BackColor = System.Drawing.Color.White;
             this.lblPodAvsnitt.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPodAvsnitt.Location = new System.Drawing.Point(1584, 962);
-            this.lblPodAvsnitt.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.lblPodAvsnitt.MaximumSize = new System.Drawing.Size(600, 0);
+            this.lblPodAvsnitt.Location = new System.Drawing.Point(792, 500);
+            this.lblPodAvsnitt.MaximumSize = new System.Drawing.Size(300, 0);
             this.lblPodAvsnitt.Name = "lblPodAvsnitt";
-            this.lblPodAvsnitt.Size = new System.Drawing.Size(65, 24);
+            this.lblPodAvsnitt.Size = new System.Drawing.Size(47, 16);
             this.lblPodAvsnitt.TabIndex = 27;
             this.lblPodAvsnitt.Text = "label6";
             // 
             // Podcast_app
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(2420, 1492);
+            this.ClientSize = new System.Drawing.Size(1210, 756);
             this.Controls.Add(this.lblPodAvsnitt);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtNamn);
@@ -463,7 +436,6 @@
             this.Controls.Add(this.lblURL);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "Podcast_app";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Podcast app";

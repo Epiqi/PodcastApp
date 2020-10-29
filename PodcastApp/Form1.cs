@@ -144,8 +144,9 @@ namespace PodcastApp
 
                 if (validering.EndastEttNamn(feedLista, kategoriNamn))
                 {
-                    //KategoriController.SkapaKategoriObjekt(kategoriNamn);
+                    kategoriController.SkapaKategoriObjekt(kategoriNamn);
                     lstKategorier.Items.Add(kategoriNamn);
+                    cmbxKategori.Items.Add(kategoriNamn);
                     txtValdKategori.Text = "";
                 }
             }
@@ -185,6 +186,7 @@ namespace PodcastApp
                     {
 
                         feedController.DeleteByKategori(kategoriNamn);
+                        kategoriController.DeleteKategori(kategoriNamn);
                     }
                 }
             }

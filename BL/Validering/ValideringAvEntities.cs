@@ -37,7 +37,8 @@ namespace BL.Validering
                 if(string.Equals(url, feed.Url, StringComparison.OrdinalIgnoreCase))
                     {
                     korrekt = false;
-                    }
+                    throw new UserException("URLadressen finns redan");
+                }
             }
 
             return korrekt;
@@ -55,13 +56,21 @@ namespace BL.Validering
         public bool KorrektKategori(List<Kategori> allaKategorier, string kategoriNamn)
         {
             bool korrekt = true;
-            foreach (Kategori kategori in allaKategorier)
+            if (!string.Equals("Välj en kategori", kategoriNamn, StringComparison.OrdinalIgnoreCase))
             {
-                if (string.Equals(kategoriNamn, kategori.Namn, StringComparison.OrdinalIgnoreCase))
+                foreach (Kategori kategori in allaKategorier)
                 {
-                    korrekt = false;
-                    throw new UserException("Ingen kategori är vald");
+                    if (string.Equals(kategoriNamn, kategori.Namn, StringComparison.OrdinalIgnoreCase))
+                    {
+                        korrekt = false;
+                        throw new UserException("Ingen kategori är vald");
+                    }
                 }
+            }
+            else
+            {
+                korrekt = false;
+                throw new UserException("Ingen kategori är vald");
             }
             return korrekt;
         }
