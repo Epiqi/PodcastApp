@@ -124,8 +124,8 @@ namespace PodcastApp
                 string frekvens = cmbxFrekvens.Text;
                 string kategori = cmbxKategori.Text;
 
-                List<Feed> allaUtomAktuellFeed = feedController.GetAllExceptThisOne();
-                List<Kategori> allaUtomAktuellKategori = kategoriController.GetAllExceptThisOne();
+                List<Feed> allaUtomAktuellFeed = feedController.GetAllExceptThisOne(url);
+                List<Kategori> allaUtomAktuellKategori = kategoriController.GetAllExceptThisOne(kategori);
 
 
                 if (validering.EndastEttNamn(allaUtomAktuellFeed, namn) && validering.KorrektURL(url) && validering.EndastEnURL(allaUtomAktuellFeed, url)
