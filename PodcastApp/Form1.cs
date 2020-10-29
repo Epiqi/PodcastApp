@@ -22,18 +22,27 @@ namespace PodcastApp
             SkrivUtSparade();
 
         }
-
+        private void lstAvsnitt_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string feedUrl = podcastDataGridView.CurrentRow.Cells[2].Value.ToString();
+            Feed valdFeed = feedController.GetFeed(feedUrl);
+            lblRubrikPodcastInfo.Text = valdFeed.Namn + ".";
+            lblAvsnittNamn.Text = valdFeed.Avsnitten[lstAvsnitt.SelectedIndex].Namn;
+            lblPodcastBeskrivning.Text = valdFeed.Avsnitten[lstAvsnitt.SelectedIndex].Beskrivning;
+        }
         private void podcastDataGridView_SelectionChanged(object sender, EventArgs e)
         {
             // Skriv ut avsnitt för vald podcast
             lstAvsnitt.Items.Clear();
             string feedUrl = podcastDataGridView.CurrentRow.Cells[2].Value.ToString();
             Feed valdFeed = feedController.GetFeed(feedUrl);
-            int nummer = 1;
+            lblRubrikPodcastInfo.Text = valdFeed.Namn;
+            lblPodcastBeskrivning.Text = valdFeed.Beskrivning;
             foreach (Avsnitt avsnitt in valdFeed.Avsnitten)
             {
-                lstAvsnitt.Items.Add(nummer++ + ".  " + avsnitt.Beskrivning);
+                lstAvsnitt.Items.Add(valdFeed.Namn + ". Avsnitt " + avsnitt.Nummer + ". " + avsnitt.Namn);
             }
+
         }
 
         // Metoder för feeds
@@ -66,9 +75,10 @@ namespace PodcastApp
                     if (ValideringAvEntities.KorrektNamn(namn) && ValideringAvEntities.KorrektURL(url)
                         && ValideringAvEntities.EnFrekvensArVald(frekvens) && ValideringAvEntities.KorrektKategori(kategori))
                     {
-                        //När vi fått URL måste vi läsa in och hämta antal avsnitt innan ett objekt kan skapas
+                        int antalFeeds = feedController.GetAll().Count;
                         feedController.SkapaFeedObjekt(namn, url, frekvens, kategori);
-                        SkrivFeed(url);
+                        if (feedController.GetAll().Count > antalFeeds)
+                            SkrivFeed(url);
                     }
                 }
                 else
@@ -175,6 +185,8 @@ namespace PodcastApp
                 MessageBox.Show("Kan inte ta bort valda poddar, välj kategori och försök igen");
             }
         }
+
+
 
 
         // string text = listBox1.GetItemText(listBox1.SelectedItem);
