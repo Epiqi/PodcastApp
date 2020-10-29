@@ -46,6 +46,7 @@ namespace PodcastApp
             Feed valdFeed = feedController.GetFeed(feedUrl);
             lblRubrikPodcastInfo.Text = valdFeed.Namn;
             lblPodcastBeskrivning.Text = valdFeed.Beskrivning;
+            lblPodAvsnitt.Text = "";
             foreach (Avsnitt avsnitt in valdFeed.Avsnitten)
             {
                 lstAvsnitt.Items.Add(valdFeed.Namn + ". Avsnitt " + avsnitt.Nummer + ". " + avsnitt.Namn);
@@ -194,8 +195,17 @@ namespace PodcastApp
             }
         }
 
-
-
-
+        private void Podcast_app_Load(object sender, EventArgs e)
+        {
+            podcastDataGridView.ClearSelection();
+            txtNamn.Text = "";
+            txtURL.Text = "";
+            cmbxFrekvens.Text = "Välj en frekvens";
+            cmbxKategori.Text = "Välj en kategori";
+            lstAvsnitt.Items.Clear();
+            lblRubrikPodcastInfo.Text = "Podcast";
+            lblPodAvsnitt.Text = "Avsnitt";
+            lblPodcastBeskrivning.Text = "Beskrivning";
+        }
     }
 }
