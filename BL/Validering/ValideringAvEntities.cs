@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace BL.Validering
 {
-    public class ValideringAvEntities 
+    public class ValideringAvEntities
     {
         public ValideringAvEntities()
         {
-                
+
         }
 
         public bool KorrektURL(string urlAdress)
@@ -26,15 +26,15 @@ namespace BL.Validering
             {
                 throw new UserException("URLadressen är inte korrekt");
             }
-            return korrekt;    
+            return korrekt;
         }
 
-        public bool EndastEnURL(List<Feed> allaFeeds, string url) 
+        public bool EndastEnURL(List<Feed> allaFeeds, string url)
         {
             bool korrekt = true;
             foreach (Feed feed in allaFeeds)
             {
-                if(string.Equals(url, feed.Url, StringComparison.OrdinalIgnoreCase))
+                if (string.Equals(url, feed.Url, StringComparison.OrdinalIgnoreCase))
                 {
                     korrekt = false;
                     throw new UserException("URLadressen finns redan");
@@ -44,7 +44,7 @@ namespace BL.Validering
             return korrekt;
         }
 
-        public bool EnFrekvensArVald(string frekvens) 
+        public bool EnFrekvensArVald(string frekvens)
         {
             bool korrekt = Int32.TryParse(frekvens, out int frekvensArVald);
             if (!korrekt)

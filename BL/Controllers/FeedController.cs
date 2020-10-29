@@ -41,9 +41,7 @@ namespace BL.Controllers
 
         public Feed GetFeed(string url)
         {
-
             return feed.GetAll().Where(f => string.Equals(f.Url, url, StringComparison.OrdinalIgnoreCase)).First();
-
         }
 
         public List<Feed> GetAll()
@@ -59,15 +57,16 @@ namespace BL.Controllers
         public void DeleteByKategori(string kategori)
         {
 
-            List<int> indexDelete = new List<int>();
+            List<Feed> feedDelete = new List<Feed>();
             for (int i = 0; i < feed.GetAll().Count; i++)
             {
                 if (string.Equals(feed.GetAll()[i].Kategorier, kategori, StringComparison.OrdinalIgnoreCase))
-                    indexDelete.Add(i);
+                    feedDelete.Add(feed.GetAll()[i]);
             }
-            foreach (int j in indexDelete)
+            foreach (Feed f in feedDelete)
             {
-                feed.Delete(j);
+                feed.Delete(f);
+
             }
         }
 
