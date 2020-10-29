@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblURL = new System.Windows.Forms.Label();
             this.lblUppdateringsf = new System.Windows.Forms.Label();
             this.lblKategori = new System.Windows.Forms.Label();
@@ -269,14 +269,14 @@
             this.podcastDataGridView.AllowUserToDeleteRows = false;
             this.podcastDataGridView.AllowUserToResizeColumns = false;
             this.podcastDataGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ButtonFace;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.podcastDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.ButtonFace;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.podcastDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.podcastDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.podcastDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnAvsnitt,
@@ -284,8 +284,8 @@
             this.ColumnURL,
             this.ColumnFrekvens,
             this.ColumnKategori});
-            this.podcastDataGridView.Location = new System.Drawing.Point(52, 42);
-            this.podcastDataGridView.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.podcastDataGridView.Location = new System.Drawing.Point(26, 23);
+            this.podcastDataGridView.Margin = new System.Windows.Forms.Padding(6);
             this.podcastDataGridView.MultiSelect = false;
             this.podcastDataGridView.Name = "podcastDataGridView";
             this.podcastDataGridView.ReadOnly = true;
@@ -297,8 +297,8 @@
             // 
             // ColumnAvsnitt
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.ColumnAvsnitt.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.ColumnAvsnitt.DefaultCellStyle = dataGridViewCellStyle6;
             this.ColumnAvsnitt.HeaderText = "Avsnitt";
             this.ColumnAvsnitt.MinimumWidth = 6;
             this.ColumnAvsnitt.Name = "ColumnAvsnitt";
@@ -358,7 +358,7 @@
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label1.Location = new System.Drawing.Point(782, 458);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(389, 290);
@@ -367,7 +367,7 @@
             // label2
             // 
             this.label2.BackColor = System.Drawing.Color.White;
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label2.Location = new System.Drawing.Point(782, 22);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(389, 272);
