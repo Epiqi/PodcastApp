@@ -19,14 +19,28 @@ namespace PodcastApp
             feedController = new FeedController();
             kategoriController = new KategoriController();
             avsnittController = new AvsnittController();
+            SkrivUtSparade();
 
         }
         // Metoder för feeds
+        private void SkrivFeed(string url)
+        {
+            string avsnitt = ""; //Hämta värde från rss-feed.
+            Entities.Feed ny = feedController.GetFeed(url);
+            avsnitt = $"{ny.Avsnitten.Count}";
+            podcastDataGridView.Rows.Add(new string[] { avsnitt, ny.Namn, ny.Url, ny.UppdateringsTid, ny.Kategorier });
+        }
+
+        private void SkrivUtSparade()
+        {
+            foreach (Feed feed in feedController.GetAll())
+                SkrivFeed(feed.Url);
+        }
+
         private void btnNyFeed_Click(object sender, System.EventArgs e)
         {
             try
             {
-                string avsnitt = ""; //Hämta värde från rss-feed.
                 string namn = txtNamn.Text;
                 string url = txtURL.Text;
                 string frekvens = cmbxFrekvens.Text;
@@ -40,9 +54,7 @@ namespace PodcastApp
                     {
                         //När vi fått URL måste vi läsa in och hämta antal avsnitt innan ett objekt kan skapas
                         feedController.SkapaFeedObjekt(namn, url, frekvens, kategori);
-                        Entities.Feed ny = feedController.GetFeed(url);
-                        avsnitt = $"{ny.Avsnitten.Count}";
-                        podcastDataGridView.Rows.Add(new string[] { avsnitt, ny.Namn, ny.Url, ny.UppdateringsTid, ny.Kategorier });
+                        SkrivFeed(url);
                     }
                 }
                 else
@@ -83,7 +95,7 @@ namespace PodcastApp
                     if (DialogResult.Yes == MessageBox.Show("Vill du ta bort podden ?", "Confirmation",
                         MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
                     {
-                        string urlToDelete = podcastDataGridView[valtIndex, 2].Value.ToString();
+                        string urlToDelete = podcastDataGridView.Rows[valtIndex].Cells[2].Value.ToString();
                         feedController.DeleteFeed(urlToDelete);
                         podcastDataGridView.Rows.RemoveAt(valtIndex);
                     }
