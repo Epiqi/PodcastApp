@@ -69,7 +69,7 @@ namespace PodcastApp
             }
 
             //Hur man lägger till en rad i Dataviewgrid.
-
+            /*
             string[] row1 = new string[] { "avsnitt1", "namn", "url", "frekvens", "kategori" };
             string[] row2 = new string[] { "avsnitt2", "namn", "url", "frekvens", "kategori" };
 
@@ -78,6 +78,7 @@ namespace PodcastApp
             {
                 podcastDataGridView.Rows.Add(rowArray);
             }
+            */
         }
 
         private void btnSparaNyaVardenFeed_Click(object sender, EventArgs e)
