@@ -36,7 +36,7 @@ namespace PodcastApp
             }
         }
 
-        // Metoder för feeds
+        
         private void SkrivFeed(string url)
         {
             string avsnitt = ""; //Hämta värde från rss-feed.
@@ -66,7 +66,6 @@ namespace PodcastApp
                     if (ValideringAvEntities.KorrektNamn(namn) && ValideringAvEntities.KorrektURL(url)
                         && ValideringAvEntities.EnFrekvensArVald(frekvens) && ValideringAvEntities.KorrektKategori(kategori))
                     {
-                        //När vi fått URL måste vi läsa in och hämta antal avsnitt innan ett objekt kan skapas
                         feedController.SkapaFeedObjekt(namn, url, frekvens, kategori);
                         SkrivFeed(url);
                     }
@@ -82,17 +81,6 @@ namespace PodcastApp
                 MessageBox.Show(exception.Message);
             }
 
-            //Hur man lägger till en rad i Dataviewgrid.
-            /*
-            string[] row1 = new string[] { "avsnitt1", "namn", "url", "frekvens", "kategori" };
-            string[] row2 = new string[] { "avsnitt2", "namn", "url", "frekvens", "kategori" };
-
-            List<Object> rows = new List<Object> { row1, row2 };
-            foreach (string[] rowArray in rows)
-            {
-                podcastDataGridView.Rows.Add(rowArray);
-            }
-            */
         }
 
         private void btnSparaNyaVardenFeed_Click(object sender, EventArgs e)
@@ -122,7 +110,7 @@ namespace PodcastApp
             }
         }
 
-        //Metoder för kategorier.
+       
         private void btnNyKategori_Click(object sender, EventArgs e)
         {
             if (!String.IsNullOrEmpty(txtValdKategori.Text))
@@ -161,25 +149,27 @@ namespace PodcastApp
         {
             try
             {
-                string kategoriNamn;
-                if (DialogResult.Yes == MessageBox.Show
+                if (!String.IsNullOrEmpty(txtValdKategori.Text))
+                {
+                    string kategoriNamn = txtValdKategori.Text;
+
+                    if (DialogResult.Yes == MessageBox.Show
                    ("Vill du ta bort kategorin och alla tillhörande poddar?", "Confirmation",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
-                {
-                    //List<Feed> allaFeeds = FeedController.DeletebyKategori(kategoriNamn);
-                }
+                    {
 
+                        feedController.DeleteByKategori(kategoriNamn);
+                    }
+                }
             }
-            catch (InvalidOperationException ex)
+            catch (InvalidOperationException ex) //gör nytt eget exeption
             {
                 MessageBox.Show("Kan inte ta bort valda poddar, välj kategori och försök igen");
             }
         }
 
 
-        // string text = listBox1.GetItemText(listBox1.SelectedItem);
-
-        // comboBox1.Items.Remove(comboBox1.SelectedItem);
+      
 
     }
 }

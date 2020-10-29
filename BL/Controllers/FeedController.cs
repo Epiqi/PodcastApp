@@ -22,7 +22,7 @@ namespace BL.Controllers
         public async void SkapaFeedObjekt(string namn, string url, string frekvens, string kategori)
         {
             Feed pod = await reader.ReadPodcastRSS(url);
-            //   pod.Namn = namn;
+            pod.Namn = namn;
             pod.Kategorier = kategori;
             pod.UppdateringsTid = frekvens;
             feed.Create(pod);
