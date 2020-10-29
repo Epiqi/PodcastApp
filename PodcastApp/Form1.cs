@@ -86,7 +86,7 @@ namespace PodcastApp
 
 
                     if (validering.EndastEttNamn(feedLista, namn) && validering.KorrektURL(url) && validering.EndastEnURL(feedLista, url)
-                        && validering.EnFrekvensArVald(frekvens) && validering.EndastEttNamn(feedLista, kategori) && validering.KorrektKategori(kategoriLista, kategori)
+                        && validering.EnFrekvensArVald(frekvens) && validering.EndastEttNamn(feedLista, kategori) && validering.KorrektKategori(kategoriLista, kategori))
                     {
                         int antalFeeds = feedController.GetAll().Count;
                         feedController.SkapaFeedObjekt(namn, url, frekvens, kategori);

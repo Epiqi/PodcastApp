@@ -52,24 +52,27 @@ namespace BL.Validering
             }
             return korrekt;
         }
-        public bool KorrektKategori(List<Feed> allaKategorier, string kategori)
+        public bool KorrektKategori(List<Kategori> allaKategorier, string kategoriNamn)
         {
-            // hämta lista och jämför?
             bool korrekt = true;
-            if (!korrekt)
+            foreach (Kategori kategori in allaKategorier)
             {
-                throw new UserException("Ingen kategori är vald");
+                if (string.Equals(kategoriNamn, kategori.Namn, StringComparison.OrdinalIgnoreCase))
+                {
+                    korrekt = false;
+                    throw new UserException("Ingen kategori är vald");
+                }
             }
             return korrekt;
         }
 
 
-        public bool EndastEttNamn(List<Feed> allaFeeds, string namn)
+        public bool EndastEttNamn(List<Feed> allaFeeds, string feedNamn)
         {
             bool korrekt = true;
             foreach (Feed feed in allaFeeds)
             {
-                if (string.Equals(namn, feed.Namn, StringComparison.OrdinalIgnoreCase))
+                if (string.Equals(feedNamn, feed.Namn, StringComparison.OrdinalIgnoreCase))
                 {
                     korrekt = false;
                     throw new UserException("Namnet du valt används redan");
