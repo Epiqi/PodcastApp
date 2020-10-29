@@ -49,7 +49,6 @@
   <ItemGroup>
     <Compile Include="Avsnitt.cs" />
     <Compile Include="Feed.cs" />
-    <Compile Include="FeedSamling.cs" />
     <Compile Include="Interfaces\ISerialize.cs" />
     <Compile Include="Kategori.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -25,6 +25,7 @@ namespace BL.Controllers
             try
             {
                 Feed pod = await reader.ReadPodcastRSS(url);
+                pod.Namn = namn;
                 pod.Kategorier = kategori;
                 pod.UppdateringsTid = frekvens;
                 feed.Create(pod);
@@ -34,7 +35,7 @@ namespace BL.Controllers
                 System.Windows.Forms.MessageBox.Show("URL-fel");
 
             }
-            //   pod.Namn = namn;
+
 
         }
 

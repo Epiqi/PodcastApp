@@ -54,8 +54,6 @@
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\KategoriRepository.cs" />
     <Compile Include="RSSReader.cs" />
-    <Compile Include="UserDataReader.cs" />
-    <Compile Include="UserDataWriter.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
