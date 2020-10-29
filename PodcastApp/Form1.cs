@@ -82,8 +82,11 @@ namespace PodcastApp
                 {
                     if (DialogResult.Yes == MessageBox.Show("Vill du ta bort podden ?", "Confirmation",
                         MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
-
+                    {
+                        string urlToDelete = podcastDataGridView[valtIndex, 2].Value.ToString();
+                        feedController.DeleteFeed(urlToDelete);
                         podcastDataGridView.Rows.RemoveAt(valtIndex);
+                    }
                 }
             }
             catch (InvalidOperationException ex)
