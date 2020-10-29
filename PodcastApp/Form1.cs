@@ -12,6 +12,7 @@ namespace PodcastApp
         FeedController feedController;
         KategoriController kategoriController;
         AvsnittController avsnittController;
+        ValideringAvEntities validering;
 
         public Podcast_app()
         {
@@ -19,12 +20,21 @@ namespace PodcastApp
             feedController = new FeedController();
             kategoriController = new KategoriController();
             avsnittController = new AvsnittController();
+            validering = new ValideringAvEntities();
             SkrivUtSparade();
 
         }
 
         private void podcastDataGridView_SelectionChanged(object sender, EventArgs e)
         {
+            if (podcastDataGridView.Rows.Count > 0)
+            {
+                txtNamn.Text = podcastDataGridView.CurrentRow.Cells[1].Value.ToString();
+                txtURL.Text = podcastDataGridView.CurrentRow.Cells[2].Value.ToString();
+                cmbxFrekvens.Text = podcastDataGridView.CurrentRow.Cells[3].Value.ToString();
+                cmbxKategori.Text = podcastDataGridView.CurrentRow.Cells[4].Value.ToString();
+            }
+
             // Skriv ut avsnitt för vald podcast
             lstAvsnitt.Items.Clear();
             string feedUrl = podcastDataGridView.CurrentRow.Cells[2].Value.ToString();
@@ -55,26 +65,29 @@ namespace PodcastApp
         {
             try
             {
-                string namn = txtNamn.Text;
-                string url = txtURL.Text;
-                string frekvens = cmbxFrekvens.Text;
-                string kategori = cmbxKategori.Text;
 
-                if (!String.IsNullOrEmpty(namn) && !String.IsNullOrEmpty(txtURL.Text)
+
+                if (!String.IsNullOrEmpty(txtNamn.Text) && !String.IsNullOrEmpty(txtURL.Text)
                     && !String.IsNullOrEmpty(cmbxFrekvens.Text) && !String.IsNullOrEmpty(cmbxKategori.Text))
                 {
-                    if (ValideringAvEntities.KorrektNamn(namn) && ValideringAvEntities.KorrektURL(url)
-                        && ValideringAvEntities.EnFrekvensArVald(frekvens) && ValideringAvEntities.KorrektKategori(kategori))
-                    {
-                        feedController.SkapaFeedObjekt(namn, url, frekvens, kategori);
-                        SkrivFeed(url);
-                    }
+                    string namn = txtNamn.Text;
+                    string url = txtURL.Text;
+                    string frekvens = cmbxFrekvens.Text;
+                    string kategori = cmbxKategori.Text;
+                    List<Feed> feedLista = feedController.GetAll();
+
+                    if (validering.EndastEttNamn(feedLista, namn) && validering.KorrektURL(url) && validering.EndastEnURL(feedLista, url)
+                            && validering.EnFrekvensArVald(frekvens)/* && validering.KorrektKategori(kategori)*/)
+                        {
+                            feedController.SkapaFeedObjekt(namn, url, frekvens, kategori);
+                            SkrivFeed(url);
+                        }
                 }
                 else
-                {
-                    MessageBox.Show("Det måste finnas värden i alla rutor");
-                }
-
+                    {
+                        MessageBox.Show("Det måste finnas värden i alla rutor");
+                    }
+                
             }
             catch (UserException exception)
             {
@@ -116,7 +129,9 @@ namespace PodcastApp
             if (!String.IsNullOrEmpty(txtValdKategori.Text))
             {
                 string kategoriNamn = txtValdKategori.Text;
-                if (ValideringAvEntities.KorrektNamn(kategoriNamn))
+                List<Feed> feedLista = feedController.GetAll();
+
+                if (validering.EndastEttNamn(feedLista, kategoriNamn))
                 {
                     //KategoriController.SkapaKategoriObjekt(kategoriNamn);
                     lstKategorier.Items.Add(kategoriNamn);
@@ -135,7 +150,7 @@ namespace PodcastApp
 
                 lstKategorier.Items.Insert(lstKategorier.SelectedIndex, nyKategori);
                 lstKategorier.Items.Remove(lstKategorier.SelectedItem);
-                //KategoriController.UppdateraKategoriObjekt(kategoriNamn);
+                //kategoriController.UppdateraKategoriObjekt(kategoriNamn);
             }
         }
 
