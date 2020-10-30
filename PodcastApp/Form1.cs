@@ -74,6 +74,13 @@ namespace PodcastApp
 
         }
 
+        private void SkrivUtSparade(string kat)
+        {
+            foreach (Feed feed in feedController.GetAllKategori(kat))
+                SkrivFeed(feed.Url);
+
+        }
+
         private void SkrivUtSparadeKategorier()
         {
 
@@ -236,7 +243,12 @@ namespace PodcastApp
         private void lstKategorier_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lstKategorier.SelectedItem != null)
+            {
                 txtValdKategori.Text = lstKategorier.SelectedItem.ToString();
+                podcastDataGridView.Rows.Clear();
+                SkrivUtSparade(lstKategorier.SelectedItem.ToString());
+                ClearSelection();
+            }
         }
 
         private void btnTaBortKategori_Click(object sender, EventArgs e)
@@ -286,6 +298,15 @@ namespace PodcastApp
             lblRubrikPodcastInfo.Text = "Podcast";
             lblPodAvsnitt.Text = "Avsnitt";
             lblPodcastBeskrivning.Text = "Beskrivning";
+        }
+
+        private void visaAlla_Click(object sender, EventArgs e)
+        {
+
+            lstKategorier.ClearSelected();
+            podcastDataGridView.Rows.Clear();
+            SkrivUtSparade();
+            ClearSelection();
         }
     }
 }
