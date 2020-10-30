@@ -127,32 +127,33 @@ namespace PodcastApp
         {
             try
             {
-                if (!String.IsNullOrEmpty(txtNamn.Text) && !String.IsNullOrEmpty(cmbxFrekvens.Text) 
+                if (!String.IsNullOrEmpty(txtNamn.Text) && !String.IsNullOrEmpty(cmbxFrekvens.Text)
                     && !String.IsNullOrEmpty(cmbxKategori.Text))
                 {
                     string namn = txtNamn.Text;
                     string url = urlSKaInteAndras;
                     string frekvens = cmbxFrekvens.Text;
                     string kategori = cmbxKategori.Text;
-                    
+
                     List<Feed> allaUtomAktuellFeed = feedController.GetAllExceptThisOne(url);
                     List<Kategori> allaKategori = kategoriController.GetAll();
 
 
-                    if (validering.EndastEttNamn(allaUtomAktuellFeed, namn) && validering.EnFrekvensArVald(frekvens) 
+                    if (validering.EndastEttNamn(allaUtomAktuellFeed, namn) && validering.EnFrekvensArVald(frekvens)
                         && validering.KorrektKategori(allaKategori, kategori))
                     {
                         int antalFeeds = feedController.GetAll().Count;
 
                         podcastDataGridView.Rows.RemoveAt(podcastDataGridView.CurrentCell.RowIndex);
-                       
+
                         feedController.DeleteFeed(url);
                         feedController.SkapaFeedObjekt(namn, url, frekvens, kategori);
-                        
-                        
+
+
 
                         if (feedController.GetAll().Count == antalFeeds)
                             SkrivFeed(url);
+                        ClearSelection();
                     }
                 }
                 else
@@ -218,9 +219,16 @@ namespace PodcastApp
             {
                 string gamlaKategorin = lstKategorier.SelectedItem.ToString();
                 string nyKategori = txtValdKategori.Text;
-
-                lstKategorier.Items.Insert(lstKategorier.SelectedIndex, nyKategori);
-                lstKategorier.Items.Remove(lstKategorier.SelectedItem);
+                kategoriController.SkapaKategoriObjekt(nyKategori);
+                feedController.ChangeKategori(nyKategori, gamlaKategorin);
+                ClearSelection();
+                kategoriController.DeleteKategori(gamlaKategorin);
+                lstKategorier.Items.Clear();
+                cmbxKategori.Items.Clear();
+                podcastDataGridView.Rows.Clear();
+                SkrivUtSparade();
+                SkrivUtSparadeKategorier();
+                ClearSelection();
                 //kategoriController.UppdateraKategoriObjekt(kategoriNamn);
             }
         }
