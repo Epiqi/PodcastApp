@@ -49,11 +49,13 @@ namespace BL.Controllers
 
         }
 
-
-
+        public List<Kategori> GetAllExceptThisOne(string namn)
+        {
+            return (from Kategori kategori in kategori.GetAll()
+                    where !string.Equals(kategori.Namn, namn, StringComparison.OrdinalIgnoreCase)
+                    select kategori).ToList();
+        }
 
     }
-
-
 
 }

@@ -122,7 +122,32 @@ namespace PodcastApp
 
         private void btnSparaNyaVardenFeed_Click(object sender, EventArgs e)
         {
-            //podcastDataGridView.SelectedCells;
+            if (!String.IsNullOrEmpty(txtNamn.Text) && !String.IsNullOrEmpty(txtURL.Text)
+                    && !String.IsNullOrEmpty(cmbxFrekvens.Text) && !String.IsNullOrEmpty(cmbxKategori.Text))
+            {
+                string namn = txtNamn.Text;
+                string url = txtURL.Text;
+                string frekvens = cmbxFrekvens.Text;
+                string kategori = cmbxKategori.Text;
+
+                List<Feed> allaUtomAktuellFeed = feedController.GetAllExceptThisOne(url);
+                List<Kategori> allaUtomAktuellKategori = kategoriController.GetAllExceptThisOne(kategori);
+
+
+                if (validering.EndastEttNamn(allaUtomAktuellFeed, namn) && validering.KorrektURL(url) && validering.EndastEnURL(allaUtomAktuellFeed, url)
+                    && validering.EnFrekvensArVald(frekvens) && validering.KorrektKategori(allaUtomAktuellKategori, kategori))
+                {
+                    int antalFeeds = feedController.GetAll().Count;
+                    feedController.DeleteFeed(url);
+                    feedController.SkapaFeedObjekt(namn, url, frekvens, kategori);
+                    if (feedController.GetAll().Count > antalFeeds)
+                        SkrivFeed(url);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Det måste finnas värden i alla rutor");
+            }
         }
 
         private void btnTaBort_Click(object sender, EventArgs e)

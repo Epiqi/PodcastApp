@@ -83,5 +83,12 @@ namespace BL.Controllers
                 feed.Delete(indexDelete);
 
         }
+
+        public List<Feed> GetAllExceptThisOne(string url)
+        {
+            return (from Feed feed in feed.GetAll()
+                    where !string.Equals(feed.Url, url, StringComparison.OrdinalIgnoreCase)
+                    select feed).ToList();
+        }
     }
 }
