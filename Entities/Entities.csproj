@@ -52,7 +52,6 @@
     <Compile Include="Interfaces\ISerialize.cs" />
     <Compile Include="Kategori.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Timer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

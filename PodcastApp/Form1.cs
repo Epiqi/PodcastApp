@@ -13,6 +13,7 @@ namespace PodcastApp
         KategoriController kategoriController;
         ValideringAvEntities validering;
         string urlSKaInteAndras;
+        private Timer ourTimer = new Timer();
 
         public Podcast_app()
         {
@@ -23,6 +24,15 @@ namespace PodcastApp
             SkrivUtSparade();
             SkrivUtSparadeKategorier();
 
+            ourTimer.Interval = 1000;
+            ourTimer.Tick += ourTimer_Tick;
+            ourTimer.Start();
+
+        }
+
+        private void ourTimer_Tick(object sender, EventArgs e)
+        {
+            feedController.BehovsFeedsUppdatera();
         }
         private void lstAvsnitt_SelectedIndexChanged(object sender, EventArgs e)
         {

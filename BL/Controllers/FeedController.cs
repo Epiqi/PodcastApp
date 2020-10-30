@@ -90,5 +90,32 @@ namespace BL.Controllers
                     where !string.Equals(feed.Url, url, StringComparison.OrdinalIgnoreCase)
                     select feed).ToList();
         }
+
+        public void UpdateFeed(string url)
+        {
+            GetFeed(url).NestaUppdatering = DateTime.Now.AddMinutes(Int32.Parse(GetFeed(url).UppdateringsTid));
+            Feed ny = GetFeed(url);
+            DeleteFeed(url);
+            SkapaFeedObjekt(ny.Namn, ny.Url, ny.UppdateringsTid, ny.Kategorier);
+            feed.SaveChanges();
+        }
+        public void BehovsFeedsUppdatera()
+        {
+            
+            foreach (Feed pod in feed.GetAll())
+            {
+                
+                if (pod.BehovsUpdatera)
+                {
+                    
+                    UpdateFeed(pod.Url);
+                   
+                    
+                }
+            }
+
+           
+        }
+
     }
 }
