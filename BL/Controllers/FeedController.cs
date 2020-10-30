@@ -65,7 +65,7 @@ namespace BL.Controllers
             }
             foreach (Feed f in feedDelete)
             {
-                feed.Delete(f);
+                DeleteFeed(f.Url);
 
             }
         }
