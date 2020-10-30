@@ -12,6 +12,7 @@ namespace PodcastApp
         FeedController feedController;
         KategoriController kategoriController;
         ValideringAvEntities validering;
+        string urlSKaInteAndras;
 
         public Podcast_app()
         {
@@ -35,12 +36,15 @@ namespace PodcastApp
             if (podcastDataGridView.Rows.Count > 0)
             {
                 txtNamn.Text = podcastDataGridView.CurrentRow.Cells[1].Value.ToString();
-                txtURL.Text = podcastDataGridView.CurrentRow.Cells[2].Value.ToString();
+                urlSKaInteAndras = podcastDataGridView.CurrentRow.Cells[2].Value.ToString();
                 cmbxFrekvens.Text = podcastDataGridView.CurrentRow.Cells[3].Value.ToString();
                 cmbxKategori.Text = podcastDataGridView.CurrentRow.Cells[4].Value.ToString();
+                skrivUtAvsnittForValdPod();
             }
+        }
 
-            // Skriv ut avsnitt för vald podcast
+        private void skrivUtAvsnittForValdPod()
+        {
             lstAvsnitt.Items.Clear();
             string feedUrl = podcastDataGridView.CurrentRow.Cells[2].Value.ToString();
             Feed valdFeed = feedController.GetFeed(feedUrl);
@@ -51,7 +55,6 @@ namespace PodcastApp
             {
                 lstAvsnitt.Items.Add(valdFeed.Namn + ". Avsnitt " + avsnitt.Nummer + ". " + avsnitt.Namn);
             }
-
         }
 
 
@@ -73,6 +76,11 @@ namespace PodcastApp
                 lstKategorier.Items.Add(kategori.Namn);
                 cmbxKategori.Items.Add(kategori.Namn);
             }
+        }
+
+        private void rensaDataEfterDelete()
+        {
+
         }
 
         private void btnNyFeed_Click(object sender, System.EventArgs e)
@@ -116,32 +124,44 @@ namespace PodcastApp
 
         private void btnSparaNyaVardenFeed_Click(object sender, EventArgs e)
         {
-            if (!String.IsNullOrEmpty(txtNamn.Text) && !String.IsNullOrEmpty(txtURL.Text)
-                    && !String.IsNullOrEmpty(cmbxFrekvens.Text) && !String.IsNullOrEmpty(cmbxKategori.Text))
+            try
             {
-                string namn = txtNamn.Text;
-                string url = txtURL.Text;
-                string frekvens = cmbxFrekvens.Text;
-                string kategori = cmbxKategori.Text;
-
-                List<Feed> allaUtomAktuellFeed = feedController.GetAllExceptThisOne(url);
-                List<Kategori> allaUtomAktuellKategori = kategoriController.GetAllExceptThisOne(kategori);
-
-
-                if (validering.EndastEttNamn(allaUtomAktuellFeed, namn) && validering.KorrektURL(url) && validering.EndastEnURL(allaUtomAktuellFeed, url)
-                    && validering.EnFrekvensArVald(frekvens) && validering.KorrektKategori(allaUtomAktuellKategori, kategori))
+                if (!String.IsNullOrEmpty(txtNamn.Text) && !String.IsNullOrEmpty(cmbxFrekvens.Text) 
+                    && !String.IsNullOrEmpty(cmbxKategori.Text))
                 {
-                    int antalFeeds = feedController.GetAll().Count;
-                    feedController.DeleteFeed(url);
-                    feedController.SkapaFeedObjekt(namn, url, frekvens, kategori);
-                    if (feedController.GetAll().Count > antalFeeds)
-                        SkrivFeed(url);
+                    string namn = txtNamn.Text;
+                    string url = urlSKaInteAndras;
+                    string frekvens = cmbxFrekvens.Text;
+                    string kategori = cmbxKategori.Text;
+                    
+                    List<Feed> allaUtomAktuellFeed = feedController.GetAllExceptThisOne(url);
+                    List<Kategori> allaKategori = kategoriController.GetAll();
+
+
+                    if (validering.EndastEttNamn(allaUtomAktuellFeed, namn) && validering.EnFrekvensArVald(frekvens) 
+                        && validering.KorrektKategori(allaKategori, kategori))
+                    {
+                        int antalFeeds = feedController.GetAll().Count;
+                        
+                        podcastDataGridView.Rows.RemoveAt(podcastDataGridView.CurrentCell.RowIndex);
+                        
+                        feedController.DeleteFeed(url);
+                        feedController.SkapaFeedObjekt(namn, url, frekvens, kategori);
+                        
+                        if (feedController.GetAll().Count == antalFeeds)
+                            SkrivFeed(url);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Det måste finnas värden i alla rutor");
                 }
             }
-            else
+            catch (UserException exception)
             {
-                MessageBox.Show("Det måste finnas värden i alla rutor");
+                MessageBox.Show(exception.Message);
             }
+
         }
 
         private void btnTaBort_Click(object sender, EventArgs e)
