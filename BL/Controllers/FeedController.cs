@@ -54,6 +54,11 @@ namespace BL.Controllers
             return (feed.GetAll().Where(f => string.Equals(f.Kategorier, kategori, StringComparison.OrdinalIgnoreCase))).ToList();
         }
 
+        public void ChangeKategori(string kategori, string old)
+        {
+            feed.ChangeKategori(kategori, old);
+        }
+
         public void DeleteByKategori(string kategori)
         {
 

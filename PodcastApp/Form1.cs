@@ -84,6 +84,13 @@ namespace PodcastApp
 
         }
 
+        private void SkrivUtSparade(string kat)
+        {
+            foreach (Feed feed in feedController.GetAllKategori(kat))
+                SkrivFeed(feed.Url);
+
+        }
+
         private void SkrivUtSparadeKategorier()
         {
 
@@ -137,33 +144,33 @@ namespace PodcastApp
         {
             try
             {
-                if (!String.IsNullOrEmpty(txtNamn.Text) && !String.IsNullOrEmpty(cmbxFrekvens.Text) 
+                if (!String.IsNullOrEmpty(txtNamn.Text) && !String.IsNullOrEmpty(cmbxFrekvens.Text)
                     && !String.IsNullOrEmpty(cmbxKategori.Text))
                 {
                     string namn = txtNamn.Text;
                     string url = urlSKaInteAndras;
                     string frekvens = cmbxFrekvens.Text;
                     string kategori = cmbxKategori.Text;
-                    
+
                     List<Feed> allaUtomAktuellFeed = feedController.GetAllExceptThisOne(url);
                     List<Kategori> allaKategori = kategoriController.GetAll();
 
 
-                    if (validering.EndastEttNamn(allaUtomAktuellFeed, namn) && validering.EnFrekvensArVald(frekvens) 
+                    if (validering.EndastEttNamn(allaUtomAktuellFeed, namn) && validering.EnFrekvensArVald(frekvens)
                         && validering.KorrektKategori(allaKategori, kategori))
                     {
                         int antalFeeds = feedController.GetAll().Count;
-                        if (podcastDataGridView.SelectedRows.Count > 0)
-                        {
-                            podcastDataGridView.Rows.RemoveAt(podcastDataGridView.CurrentCell.RowIndex);
 
-                            feedController.DeleteFeed(url);
-                            feedController.SkapaFeedObjekt(namn, url, frekvens, kategori);
-                        
-                        
+                        podcastDataGridView.Rows.RemoveAt(podcastDataGridView.CurrentCell.RowIndex);
+
+                        feedController.DeleteFeed(url);
+                        feedController.SkapaFeedObjekt(namn, url, frekvens, kategori);
+
+
+
                         if (feedController.GetAll().Count == antalFeeds)
                             SkrivFeed(url);
-                        }
+                        ClearSelection();
                     }
                 }
                 else
@@ -229,9 +236,16 @@ namespace PodcastApp
             {
                 string gamlaKategorin = lstKategorier.SelectedItem.ToString();
                 string nyKategori = txtValdKategori.Text;
-
-                lstKategorier.Items.Insert(lstKategorier.SelectedIndex, nyKategori);
-                lstKategorier.Items.Remove(lstKategorier.SelectedItem);
+                kategoriController.SkapaKategoriObjekt(nyKategori);
+                feedController.ChangeKategori(nyKategori, gamlaKategorin);
+                ClearSelection();
+                kategoriController.DeleteKategori(gamlaKategorin);
+                lstKategorier.Items.Clear();
+                cmbxKategori.Items.Clear();
+                podcastDataGridView.Rows.Clear();
+                SkrivUtSparade();
+                SkrivUtSparadeKategorier();
+                ClearSelection();
                 //kategoriController.UppdateraKategoriObjekt(kategoriNamn);
             }
         }
@@ -239,7 +253,12 @@ namespace PodcastApp
         private void lstKategorier_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lstKategorier.SelectedItem != null)
+            {
                 txtValdKategori.Text = lstKategorier.SelectedItem.ToString();
+                podcastDataGridView.Rows.Clear();
+                SkrivUtSparade(lstKategorier.SelectedItem.ToString());
+                ClearSelection();
+            }
         }
 
         private void btnTaBortKategori_Click(object sender, EventArgs e)
@@ -289,6 +308,15 @@ namespace PodcastApp
             lblRubrikPodcastInfo.Text = "Podcast";
             lblPodAvsnitt.Text = "Avsnitt";
             lblPodcastBeskrivning.Text = "Beskrivning";
+        }
+
+        private void visaAlla_Click(object sender, EventArgs e)
+        {
+
+            lstKategorier.ClearSelected();
+            podcastDataGridView.Rows.Clear();
+            SkrivUtSparade();
+            ClearSelection();
         }
     }
 }
