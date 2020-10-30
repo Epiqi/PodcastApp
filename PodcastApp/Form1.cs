@@ -84,11 +84,6 @@ namespace PodcastApp
             }
         }
 
-        private void rensaDataEfterDelete()
-        {
-
-        }
-
         private void btnNyFeed_Click(object sender, System.EventArgs e)
         {
             try
@@ -148,14 +143,17 @@ namespace PodcastApp
                         && validering.KorrektKategori(allaKategori, kategori))
                     {
                         int antalFeeds = feedController.GetAll().Count;
+                        if (podcastDataGridView.SelectedRows.Count > 0)
+                        {
+                            podcastDataGridView.Rows.RemoveAt(podcastDataGridView.CurrentCell.RowIndex);
+
+                            feedController.DeleteFeed(url);
+                            feedController.SkapaFeedObjekt(namn, url, frekvens, kategori);
                         
-                        podcastDataGridView.Rows.RemoveAt(podcastDataGridView.CurrentCell.RowIndex);
-                        
-                        feedController.DeleteFeed(url);
-                        feedController.SkapaFeedObjekt(namn, url, frekvens, kategori);
                         
                         if (feedController.GetAll().Count == antalFeeds)
                             SkrivFeed(url);
+                        }
                     }
                 }
                 else
@@ -167,7 +165,10 @@ namespace PodcastApp
             {
                 MessageBox.Show(exception.Message);
             }
-
+            catch (System.NullReferenceException exception)
+            {
+                MessageBox.Show("Ingen pod är vald");
+            }
         }
 
         private void btnTaBort_Click(object sender, EventArgs e)
@@ -183,6 +184,7 @@ namespace PodcastApp
                         string urlToDelete = podcastDataGridView.Rows[valtIndex].Cells[2].Value.ToString();
                         feedController.DeleteFeed(urlToDelete);
                         podcastDataGridView.Rows.RemoveAt(valtIndex);
+                        ClearSelection();
                     }
                 }
             }
