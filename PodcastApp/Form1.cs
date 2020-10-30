@@ -21,6 +21,7 @@ namespace PodcastApp
             kategoriController = new KategoriController();
             validering = new ValideringAvEntities();
             SkrivUtSparade();
+            SkrivUtSparadeKategorier();
 
         }
         private void lstAvsnitt_SelectedIndexChanged(object sender, EventArgs e)
@@ -70,6 +71,11 @@ namespace PodcastApp
         {
             foreach (Feed feed in feedController.GetAll())
                 SkrivFeed(feed.Url);
+
+        }
+
+        private void SkrivUtSparadeKategorier()
+        {
 
             foreach (Kategori kategori in kategoriController.GetAll())
             {
@@ -238,8 +244,14 @@ namespace PodcastApp
                     {
                         lstKategorier.Items.Remove(lstKategorier.SelectedItem);
                         cmbxKategori.Items.Remove(kategoriNamn);
+                        ClearSelection();
                         feedController.DeleteByKategori(kategoriNamn);
                         kategoriController.DeleteKategori(kategoriNamn);
+                        // ta bort rätt rader i datagridview
+                        podcastDataGridView.Rows.Clear();
+                        SkrivUtSparade();
+                        ClearSelection();
+
                     }
                 }
             }
@@ -250,6 +262,11 @@ namespace PodcastApp
         }
 
         private void Podcast_app_Load(object sender, EventArgs e)
+        {
+            ClearSelection();
+        }
+
+        private void ClearSelection()
         {
             podcastDataGridView.ClearSelection();
             txtNamn.Text = "";
