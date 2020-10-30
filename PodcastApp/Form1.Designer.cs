@@ -284,8 +284,7 @@
             this.ColumnURL,
             this.ColumnFrekvens,
             this.ColumnKategori});
-            this.podcastDataGridView.Location = new System.Drawing.Point(52, 42);
-            this.podcastDataGridView.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.podcastDataGridView.Location = new System.Drawing.Point(13, 12);
             this.podcastDataGridView.MultiSelect = false;
             this.podcastDataGridView.Name = "podcastDataGridView";
             this.podcastDataGridView.ReadOnly = true;
@@ -358,19 +357,21 @@
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label1.Location = new System.Drawing.Point(782, 458);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(389, 290);
+            this.label1.Size = new System.Drawing.Size(390, 291);
             this.label1.TabIndex = 24;
             // 
             // label2
             // 
             this.label2.BackColor = System.Drawing.Color.White;
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label2.Location = new System.Drawing.Point(782, 22);
+            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label2.Location = new System.Drawing.Point(781, 21);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(389, 272);
+            this.label2.Size = new System.Drawing.Size(390, 273);
             this.label2.TabIndex = 25;
             // 
             // label3

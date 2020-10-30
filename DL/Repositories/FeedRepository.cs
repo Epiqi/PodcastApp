@@ -31,6 +31,12 @@ namespace DL.Repositories
             SaveChanges();
         }
 
+        public void Delete(Feed feed)
+        {
+            feeds.Remove(feed);
+            SaveChanges();
+        }
+
         public List<Feed> GetAll()
         {
             List<Feed> savedFeeds = new List<Feed>();

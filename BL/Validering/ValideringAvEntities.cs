@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace BL.Validering
 {
-    public class ValideringAvEntities 
+    public class ValideringAvEntities
     {
         public ValideringAvEntities()
         {
-                
+
         }
 
         public bool KorrektURL(string urlAdress)
@@ -26,16 +26,16 @@ namespace BL.Validering
             {
                 throw new UserException("URLadressen är inte korrekt");
             }
-            return korrekt;    
+            return korrekt;
         }
 
-        public bool EndastEnURL(List<Feed> allaFeeds, string url) 
+        public bool EndastEnURL(List<Feed> allaFeeds, string url)
         {
             bool korrekt = true;
             foreach (Feed feed in allaFeeds)
             {
-                if(string.Equals(url, feed.Url, StringComparison.OrdinalIgnoreCase))
-                    {
+                if (string.Equals(url, feed.Url, StringComparison.OrdinalIgnoreCase))
+                {
                     korrekt = false;
                     throw new UserException("URLadressen finns redan");
                 }
@@ -44,7 +44,7 @@ namespace BL.Validering
             return korrekt;
         }
 
-        public bool EnFrekvensArVald(string frekvens) 
+        public bool EnFrekvensArVald(string frekvens)
         {
             bool korrekt = Int32.TryParse(frekvens, out int frekvensArVald);
             if (!korrekt)
@@ -55,24 +55,18 @@ namespace BL.Validering
         }
         public bool KorrektKategori(List<Kategori> allaKategorier, string kategoriNamn)
         {
-            bool korrekt = true;
             if (!string.Equals("Välj en kategori", kategoriNamn, StringComparison.OrdinalIgnoreCase))
             {
                 foreach (Kategori kategori in allaKategorier)
                 {
                     if (string.Equals(kategoriNamn, kategori.Namn, StringComparison.OrdinalIgnoreCase))
                     {
-                        korrekt = false;
-                        throw new UserException("Ingen kategori är vald");
+                        return true;
                     }
                 }
             }
-            else
-            {
-                korrekt = false;
-                throw new UserException("Ingen kategori är vald");
-            }
-            return korrekt;
+            throw new UserException("Ingen kategori är vald");
+            return false;
         }
 
 

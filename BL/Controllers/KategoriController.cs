@@ -13,11 +13,10 @@ namespace BL.Controllers
     {
         private readonly RSSReader reader = new RSSReader();
         private readonly KategoriRepository kategori = new KategoriRepository();
-        FeedController feedController = new FeedController();
-        
+
         public KategoriController()
         {
-            
+
 
         }
 
@@ -36,7 +35,6 @@ namespace BL.Controllers
 
         public void DeleteKategori(string namn)
         {
-            feedController.DeleteByKategori(namn);
 
             int indexDelete = -1;
             for (int i = 0; i < kategori.GetAll().Count; i++)
@@ -51,11 +49,6 @@ namespace BL.Controllers
 
         }
 
-        
-
-
     }
-
-
 
 }
