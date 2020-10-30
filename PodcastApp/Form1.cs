@@ -143,17 +143,16 @@ namespace PodcastApp
                         && validering.KorrektKategori(allaKategori, kategori))
                     {
                         int antalFeeds = feedController.GetAll().Count;
-                        if (podcastDataGridView.SelectedRows.Count > 0)
-                        {
-                            podcastDataGridView.Rows.RemoveAt(podcastDataGridView.CurrentCell.RowIndex);
 
-                            feedController.DeleteFeed(url);
-                            feedController.SkapaFeedObjekt(namn, url, frekvens, kategori);
+                        podcastDataGridView.Rows.RemoveAt(podcastDataGridView.CurrentCell.RowIndex);
+                       
+                        feedController.DeleteFeed(url);
+                        feedController.SkapaFeedObjekt(namn, url, frekvens, kategori);
                         
                         
+
                         if (feedController.GetAll().Count == antalFeeds)
                             SkrivFeed(url);
-                        }
                     }
                 }
                 else
