@@ -106,10 +106,11 @@ namespace PodcastApp
                     {
                         int antalFeeds = feedController.GetAll().Count;
                         feedController.SkapaFeedObjekt(namn, url, frekvens, kategori);
-                        
+                        if (feedController.GetAll().Count > antalFeeds)
+                        {
                             podcastDataGridView.Rows.Clear();
                             SkrivUtSparade();
-                        
+                        }
                     }
                 }
                 else
@@ -129,19 +130,19 @@ namespace PodcastApp
         {
             try
             {
-                if (!String.IsNullOrEmpty(txtNamn.Text) && !String.IsNullOrEmpty(cmbxFrekvens.Text) 
+                if (!String.IsNullOrEmpty(txtNamn.Text) && !String.IsNullOrEmpty(cmbxFrekvens.Text)
                     && !String.IsNullOrEmpty(cmbxKategori.Text))
                 {
                     string namn = txtNamn.Text;
                     string url = urlSKaInteAndras;
                     string frekvens = cmbxFrekvens.Text;
                     string kategori = cmbxKategori.Text;
-                    
+
                     List<Feed> allaUtomAktuellFeed = feedController.GetAllExceptThisOne(url);
                     List<Kategori> allaKategori = kategoriController.GetAll();
 
 
-                    if (validering.EndastEttNamn(allaUtomAktuellFeed, namn) && validering.EnFrekvensArVald(frekvens) 
+                    if (validering.EndastEttNamn(allaUtomAktuellFeed, namn) && validering.EnFrekvensArVald(frekvens)
                         && validering.KorrektKategori(allaKategori, kategori))
                     {
                         int antalFeeds = feedController.GetAll().Count;
