@@ -24,7 +24,7 @@ namespace BL.Controllers
         {
             try
             {
-                Feed pod = await reader.ReadPodcastRSS(url);
+                Feed pod = await reader.ReadPodcastRSSAsync(url);
                 pod.Namn = namn;
                 pod.Kategorier = kategori;
                 pod.UppdateringsTid = frekvens;

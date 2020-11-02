@@ -84,13 +84,6 @@ namespace PodcastApp
             ClearSelection();
         }
 
-        private void SkrivUtSparade(string kat)
-        {
-            foreach (Feed feed in feedController.GetAllKategori(kat))
-                SkrivFeed(feed.Url);
-
-        }
-
         private void SkrivUtSparadeKategorier()
         {
 
@@ -124,7 +117,10 @@ namespace PodcastApp
                         int antalFeeds = feedController.GetAll().Count;
                         feedController.SkapaFeedObjekt(namn, url, frekvens, kategori);
                         if (feedController.GetAll().Count > antalFeeds)
-                            SkrivFeed(url);
+                        {
+                            podcastDataGridView.Rows.Clear();
+                            SkrivUtSparade();
+                        
                     }
                 }
                 else
@@ -169,8 +165,10 @@ namespace PodcastApp
 
 
                         if (feedController.GetAll().Count == antalFeeds)
-                            SkrivFeed(url);
-                        ClearSelection();
+                        {
+                            podcastDataGridView.Rows.Clear();
+                            SkrivUtSparade();
+                        }
                     }
                 }
                 else
