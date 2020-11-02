@@ -71,7 +71,7 @@ namespace PodcastApp
         {
             foreach (Feed feed in feedController.GetAll())
                 SkrivFeed(feed.Url);
-
+            ClearSelection();
         }
 
         private void SkrivUtSparadeKategorier()
@@ -110,7 +110,7 @@ namespace PodcastApp
                         {
                             podcastDataGridView.Rows.Clear();
                             SkrivUtSparade();
-                        }
+                        
                     }
                 }
                 else
