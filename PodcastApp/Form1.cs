@@ -24,7 +24,7 @@ namespace PodcastApp
             SkrivUtSparade();
             SkrivUtSparadeKategorier();
 
-            ourTimer.Interval = 1000;
+            ourTimer.Interval = 30000;
             ourTimer.Tick += ourTimer_Tick;
             ourTimer.Start();
 
@@ -81,7 +81,7 @@ namespace PodcastApp
         {
             foreach (Feed feed in feedController.GetAll())
                 SkrivFeed(feed.Url);
-
+            ClearSelection();
         }
 
         private void SkrivUtSparade(string kat)
@@ -245,7 +245,7 @@ namespace PodcastApp
                 podcastDataGridView.Rows.Clear();
                 SkrivUtSparade();
                 SkrivUtSparadeKategorier();
-                ClearSelection();
+
                 //kategoriController.UppdateraKategoriObjekt(kategoriNamn);
             }
         }
@@ -281,7 +281,7 @@ namespace PodcastApp
                         // ta bort rätt rader i datagridview
                         podcastDataGridView.Rows.Clear();
                         SkrivUtSparade();
-                        ClearSelection();
+
 
                     }
                 }
@@ -316,7 +316,6 @@ namespace PodcastApp
             lstKategorier.ClearSelected();
             podcastDataGridView.Rows.Clear();
             SkrivUtSparade();
-            ClearSelection();
         }
     }
 }
