@@ -13,6 +13,7 @@ namespace PodcastApp
         KategoriController kategoriController;
         ValideringAvEntities validering;
         string urlSKaInteAndras;
+        private Timer ourTimer = new Timer();
 
         public Podcast_app()
         {
@@ -23,6 +24,15 @@ namespace PodcastApp
             SkrivUtSparade();
             SkrivUtSparadeKategorier();
 
+            ourTimer.Interval = 30000;
+            ourTimer.Tick += ourTimer_Tick;
+            ourTimer.Start();
+
+        }
+
+        private void ourTimer_Tick(object sender, EventArgs e)
+        {
+            feedController.BehovsFeedsUppdatera();
         }
         private void lstAvsnitt_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -224,9 +234,16 @@ namespace PodcastApp
             {
                 string gamlaKategorin = lstKategorier.SelectedItem.ToString();
                 string nyKategori = txtValdKategori.Text;
+                kategoriController.SkapaKategoriObjekt(nyKategori);
+                feedController.ChangeKategori(nyKategori, gamlaKategorin);
+                ClearSelection();
+                kategoriController.DeleteKategori(gamlaKategorin);
+                lstKategorier.Items.Clear();
+                cmbxKategori.Items.Clear();
+                podcastDataGridView.Rows.Clear();
+                SkrivUtSparade();
+                SkrivUtSparadeKategorier();
 
-                lstKategorier.Items.Insert(lstKategorier.SelectedIndex, nyKategori);
-                lstKategorier.Items.Remove(lstKategorier.SelectedItem);
                 //kategoriController.UppdateraKategoriObjekt(kategoriNamn);
             }
         }
@@ -234,7 +251,12 @@ namespace PodcastApp
         private void lstKategorier_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lstKategorier.SelectedItem != null)
+            {
                 txtValdKategori.Text = lstKategorier.SelectedItem.ToString();
+                podcastDataGridView.Rows.Clear();
+                SkrivUtSparade(lstKategorier.SelectedItem.ToString());
+                ClearSelection();
+            }
         }
 
         private void btnTaBortKategori_Click(object sender, EventArgs e)
@@ -257,7 +279,7 @@ namespace PodcastApp
                         // ta bort rätt rader i datagridview
                         podcastDataGridView.Rows.Clear();
                         SkrivUtSparade();
-                        ClearSelection();
+
 
                     }
                 }
@@ -284,6 +306,14 @@ namespace PodcastApp
             lblRubrikPodcastInfo.Text = "Podcast";
             lblPodAvsnitt.Text = "Avsnitt";
             lblPodcastBeskrivning.Text = "Beskrivning";
+        }
+
+        private void visaAlla_Click(object sender, EventArgs e)
+        {
+
+            lstKategorier.ClearSelected();
+            podcastDataGridView.Rows.Clear();
+            SkrivUtSparade();
         }
     }
 }

@@ -16,11 +16,23 @@ namespace Entities
         public string Url { get; set; }
         public string UppdateringsTid { get; set; }
 
+        public DateTime NestaUppdatering { get; set; }
+
         public Feed()
         {
             // Avsnitten = new List<Avsnitt>();
 
         }
+
+        public bool BehovsUpdatera
+        {
+            get
+            {
+                return NestaUppdatering <= DateTime.Now;
+            }
+        }
+
+
 
     }
 }

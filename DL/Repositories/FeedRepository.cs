@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 using Entities;
+
+
 
 namespace DL.Repositories
 {
@@ -11,6 +15,7 @@ namespace DL.Repositories
     {
         DataManager dataManager;
         List<Feed> feeds;
+        
         public FeedRepository()
         {
             feeds = new List<Feed>();
@@ -31,9 +36,12 @@ namespace DL.Repositories
             SaveChanges();
         }
 
-        public void Delete(Feed feed)
+        public void ChangeKategori(string nyKat, string oldKat)
         {
-            feeds.Remove(feed);
+            foreach (Feed feed in feeds)
+                if (feed.Kategorier == oldKat)
+                    feed.Kategorier = nyKat;
+
             SaveChanges();
         }
 
@@ -65,7 +73,6 @@ namespace DL.Repositories
             }
             SaveChanges();
         }
-
 
     }
 }
