@@ -42,9 +42,6 @@ namespace DL
                 podcast.Namn = nyFeed.Title.Text;
                 podcast.Beskrivning = nyFeed.Description.Text;
 
-                
-
-
                 foreach (SyndicationItem avsn in nyFeed.Items)
                 {
                     
@@ -56,8 +53,7 @@ namespace DL
 
                 podcast.Avsnitten = arrayAvAvsnitt.ToList();
             }
-            //podcast.Avsnitten.Add(avsnitt);
-            // podcast.Avsnitten = allaAvsnitt;
+           
             return podcast;
         }
 
@@ -75,7 +71,8 @@ namespace DL
             {
                 // För vissa RSS-feeds blir SyndicationItem.Summary null och infon hamnar i .Content istället.
                 TextSyndicationContent text = (TextSyndicationContent)avsn.Content;
-                avsnitt.Beskrivning = Regex.Replace(text.Text, "<.*?>", String.Empty);
+                if(text != null)
+                    avsnitt.Beskrivning = Regex.Replace(text.Text, "<.*?>", String.Empty);
             }
             avsnitt.Nummer = counter;
             counter++;

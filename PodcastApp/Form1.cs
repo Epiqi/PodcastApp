@@ -106,8 +106,10 @@ namespace PodcastApp
                     {
                         int antalFeeds = feedController.GetAll().Count;
                         feedController.SkapaFeedObjekt(namn, url, frekvens, kategori);
-                        if (feedController.GetAll().Count > antalFeeds)
-                            SkrivFeed(url);
+                        
+                            podcastDataGridView.Rows.Clear();
+                            SkrivUtSparade();
+                        
                     }
                 }
                 else
@@ -145,14 +147,17 @@ namespace PodcastApp
                         int antalFeeds = feedController.GetAll().Count;
 
                         podcastDataGridView.Rows.RemoveAt(podcastDataGridView.CurrentCell.RowIndex);
-                       
+
                         feedController.DeleteFeed(url);
                         feedController.SkapaFeedObjekt(namn, url, frekvens, kategori);
-                        
-                        
+
+
 
                         if (feedController.GetAll().Count == antalFeeds)
-                            SkrivFeed(url);
+                        {
+                            podcastDataGridView.Rows.Clear();
+                            SkrivUtSparade();
+                        }
                     }
                 }
                 else
