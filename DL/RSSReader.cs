@@ -18,12 +18,7 @@ namespace DL
 
         }
 
-        public async override Task<Feed> Read(string url)
-        {
-            return await ReadPodcastRSSAsync(url);
-        }
-
-        public async Task<Feed> ReadPodcastRSSAsync(string url)
+        public async override Task<Feed> ReadPodcastRSSAsync(string url)
         {
             Feed podcast = new Feed();
             podcast.Url = url;

@@ -13,13 +13,13 @@ namespace DL
 
         }
 
-        public virtual T Read()
+        public virtual T ReadPodcastRSS()
         {
             T obj = new T();
             return obj;
         }
 
-        public virtual Task<T> Read(string url)
+        public virtual Task<T> ReadPodcastRSSAsync(string url)
         {
             return null;
         }
