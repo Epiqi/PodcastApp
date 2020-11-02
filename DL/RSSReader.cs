@@ -12,6 +12,7 @@ namespace DL
 {
     public class RSSReader : GeneralReader<Feed>
     {
+        int counter = 1;
         public RSSReader()
         {
 
@@ -19,14 +20,17 @@ namespace DL
 
         public async override Task<Feed> Read(string url)
         {
-            return await ReadPodcastRSS(url);
+            return await ReadPodcastRSSAsync(url);
         }
 
-        public async Task<Feed> ReadPodcastRSS(string url)
+        public async Task<Feed> ReadPodcastRSSAsync(string url)
         {
             Feed podcast = new Feed();
             podcast.Url = url;
             podcast.Avsnitten = new List<Avsnitt>();
+            Avsnitt avsnitt = new Avsnitt();
+
+            List<Task<Avsnitt>> taskAvsnitt = new List<Task<Avsnitt>>();
 
             XmlReaderSettings xmlsettings = new XmlReaderSettings();
             xmlsettings.Async = true;
@@ -38,32 +42,41 @@ namespace DL
                 podcast.Namn = nyFeed.Title.Text;
                 podcast.Beskrivning = nyFeed.Description.Text;
 
-                int counter = 1;
-
-
                 foreach (SyndicationItem avsn in nyFeed.Items)
                 {
-                    Avsnitt avsnitt = new Avsnitt();
-                    avsnitt.Namn = avsn.Title.Text;
-                    if (avsn.Summary != null)
-                    {
-                        avsnitt.Beskrivning = avsn.Summary.Text;
-                    }
-                    else
-                    {
-                        // För vissa RSS-feeds blir SyndicationItem.Summary null och infon hamnar i .Content istället.
-                        TextSyndicationContent text = (TextSyndicationContent)avsn.Content;
-                        avsnitt.Beskrivning = Regex.Replace(text.Text, "<.*?>", String.Empty);
-                    }
-                    avsnitt.Nummer = counter;
 
-                    podcast.Avsnitten.Add(avsnitt);
-                    counter++;
+                    taskAvsnitt.Add(Task.Run(() => OrdnaAvsnitt(avsn)));
+
                 }
 
+                var arrayAvAvsnitt = await Task.WhenAll(taskAvsnitt);
+
+                podcast.Avsnitten = arrayAvAvsnitt.ToList();
             }
-            // podcast.Avsnitten = allaAvsnitt;
+
             return podcast;
+        }
+
+        private Avsnitt OrdnaAvsnitt(SyndicationItem avsn)
+        {
+            Avsnitt avsnitt = new Avsnitt();
+
+
+            avsnitt.Namn = avsn.Title.Text;
+            if (avsn.Summary != null)
+            {
+                avsnitt.Beskrivning = avsn.Summary.Text;
+            }
+            else
+            {
+                // För vissa RSS-feeds blir SyndicationItem.Summary null och infon hamnar i .Content istället.
+                TextSyndicationContent text = (TextSyndicationContent)avsn.Content;
+                if (text != null)
+                    avsnitt.Beskrivning = Regex.Replace(text.Text, "<.*?>", String.Empty);
+            }
+            avsnitt.Nummer = counter;
+            counter++;
+            return avsnitt;
         }
     }
 
