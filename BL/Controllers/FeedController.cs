@@ -41,7 +41,7 @@ namespace BL.Controllers
 
         public Feed GetFeed(string url)
         {
-            return feedRepository.GetAll().Where(f => string.Equals(f.Url, url, StringComparison.OrdinalIgnoreCase)).First();
+            return feedRepository.GetAll().Where(feed => string.Equals(feed.Url, url, StringComparison.OrdinalIgnoreCase)).First();
         }
 
         public List<Feed> GetAll()
@@ -51,7 +51,7 @@ namespace BL.Controllers
 
         public List<Feed> GetAllKategori(string kategori)
         {
-            return (feedRepository.GetAll().Where(f => string.Equals(f.Kategorier, kategori, StringComparison.OrdinalIgnoreCase))).ToList();
+            return (feedRepository.GetAll().Where(feed => string.Equals(feed.Kategorier, kategori, StringComparison.OrdinalIgnoreCase))).ToList();
         }
 
         public void ChangeKategori(string kategori, string old)
@@ -68,9 +68,9 @@ namespace BL.Controllers
                 if (string.Equals(feedRepository.GetAll()[i].Kategorier, kategori, StringComparison.OrdinalIgnoreCase))
                     feedDelete.Add(feedRepository.GetAll()[i]);
             }
-            foreach (Feed f in feedDelete)
+            foreach (Feed feed in feedDelete)
             {
-                DeleteFeed(f.Url);
+                DeleteFeed(feed.Url);
 
             }
         }
@@ -106,20 +106,13 @@ namespace BL.Controllers
         }
         public void BehovsFeedsUppdatera()
         {
-            
             foreach (Feed pod in feedRepository.GetAll())
             {
-                
                 if (pod.BehovsUpdatera)
                 {
-                    
                     UpdateFeed(pod.Url);
-                   
-                    
                 }
             }
-
-           
         }
 
     }
