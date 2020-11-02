@@ -9,11 +9,11 @@ namespace PodcastApp
 {
     public partial class Podcast_app : Form
     {
-        FeedController feedController;
-        KategoriController kategoriController;
-        ValideringAvEntities validering;
-        string urlSKaInteAndras;
-        private Timer ourTimer = new Timer();
+        private readonly FeedController feedController;
+        private readonly KategoriController kategoriController;
+        private readonly ValideringAvEntities validering;
+        private string urlSKaInteAndras;
+        private readonly Timer ourTimer = new Timer();
 
         public Podcast_app()
         {
