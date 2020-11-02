@@ -101,7 +101,7 @@ namespace PodcastApp
             }
         }
 
-        private void btnNyFeed_Click(object sender, System.EventArgs e)
+        private async void btnNyFeed_Click(object sender, System.EventArgs e)
         {
             try
             {
@@ -122,7 +122,7 @@ namespace PodcastApp
                         && validering.EnFrekvensArVald(frekvens) && validering.KorrektKategori(kategoriLista, kategori))
                     {
                         int antalFeeds = feedController.GetAll().Count;
-                        feedController.SkapaFeedObjekt(namn, url, frekvens, kategori);
+                        await feedController.SkapaFeedObjekt(namn, url, frekvens, kategori);
                         if (feedController.GetAll().Count > antalFeeds)
                             SkrivFeed(url);
                     }
@@ -140,7 +140,7 @@ namespace PodcastApp
 
         }
 
-        private void btnSparaNyaVardenFeed_Click(object sender, EventArgs e)
+        private async void btnSparaNyaVardenFeed_Click(object sender, EventArgs e)
         {
             try
             {
@@ -164,7 +164,7 @@ namespace PodcastApp
                         podcastDataGridView.Rows.RemoveAt(podcastDataGridView.CurrentCell.RowIndex);
 
                         feedController.DeleteFeed(url);
-                        feedController.SkapaFeedObjekt(namn, url, frekvens, kategori);
+                        await feedController.SkapaFeedObjekt(namn, url, frekvens, kategori);
 
 
 
