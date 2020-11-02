@@ -65,8 +65,8 @@ namespace BL.Validering
                     }
                 }
             }
-            throw new UserException("Ingen kategori är vald");
             return false;
+            throw new UserException("Ingen kategori är vald");
         }
 
 

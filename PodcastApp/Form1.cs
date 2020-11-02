@@ -64,7 +64,7 @@ namespace PodcastApp
             lblPodAvsnitt.Text = "";
             foreach (Avsnitt avsnitt in valdFeed.Avsnitten)
             {
-                lstAvsnitt.Items.Add(valdFeed.Namn + ". Avsnitt " + avsnitt.Nummer + ". " + avsnitt.Namn);
+                lstAvsnitt.Items.Add(valdFeed.Namn + ". " + avsnitt.Namn);
             }
         }
 
@@ -182,7 +182,7 @@ namespace PodcastApp
             {
                 MessageBox.Show(exception.Message);
             }
-            catch (System.NullReferenceException exception)
+            catch (System.NullReferenceException)
             {
                 MessageBox.Show("Ingen pod är vald");
             }
@@ -205,7 +205,7 @@ namespace PodcastApp
                     }
                 }
             }
-            catch (InvalidOperationException ex)
+            catch (InvalidOperationException)
             {
                 MessageBox.Show("Kan inte ta bort vald rad, välj raden och försök igen");
             }
@@ -286,7 +286,7 @@ namespace PodcastApp
                     }
                 }
             }
-            catch (InvalidOperationException ex) //gör nytt eget exeption
+            catch (InvalidOperationException) //gör nytt eget exeption
             {
                 MessageBox.Show("Kan inte ta bort valda poddar, välj kategori och försök igen");
             }

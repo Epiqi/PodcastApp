@@ -34,14 +34,7 @@ namespace DL.Repositories
         public List<Kategori> GetAll()
         {
             List<Kategori> savedKategorier = new List<Kategori>();
-            try
-            {
-                savedKategorier = dataManager.KategoriDeserialize();
-            }
-            catch (Exception ex)
-            {
-
-            }
+            savedKategorier = dataManager.KategoriDeserialize();
 
             return savedKategorier;
         }

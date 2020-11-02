@@ -30,7 +30,7 @@ namespace BL.Controllers
                 pod.UppdateringsTid = frekvens;
                 feedRepository.Create(pod);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 System.Windows.Forms.MessageBox.Show("URL-fel");
 
