@@ -20,7 +20,7 @@ namespace BL.Controllers
 
         }
 
-        public async void SkapaFeedObjekt(string namn, string url, string frekvens, string kategori)
+        public async Task<Feed> SkapaFeedObjekt(string namn, string url, string frekvens, string kategori)
         {
             try
             {
@@ -29,10 +29,12 @@ namespace BL.Controllers
                 pod.Kategorier = kategori;
                 pod.UppdateringsTid = frekvens;
                 feedRepository.Create(pod);
+                return null;
             }
             catch (Exception)
             {
                 System.Windows.Forms.MessageBox.Show("URL-fel");
+                return null;
 
             }
 
