@@ -15,7 +15,6 @@ namespace DL.Repositories
     {
         DataManager dataManager;
         List<Feed> feeds;
-        
         public FeedRepository()
         {
             feeds = new List<Feed>();

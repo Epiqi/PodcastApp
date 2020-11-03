@@ -20,7 +20,6 @@ namespace Entities
 
         public Feed()
         {
-            // Avsnitten = new List<Avsnitt>();
 
         }
 

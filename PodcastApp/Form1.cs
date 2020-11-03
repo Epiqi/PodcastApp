@@ -71,7 +71,7 @@ namespace PodcastApp
 
         private void SkrivFeed(string url)
         {
-            string avsnitt = ""; //Hämta värde från rss-feed.
+            string avsnitt = "";
             Entities.Feed ny = feedController.GetFeed(url);
             avsnitt = $"{ny.Avsnitten.Count}";
             podcastDataGridView.Rows.Add(new string[] { avsnitt, ny.Namn, ny.Url, ny.UppdateringsTid, ny.Kategorier });
@@ -279,7 +279,6 @@ namespace PodcastApp
                         ClearSelection();
                         feedController.DeleteByKategori(kategoriNamn);
                         kategoriController.DeleteKategori(kategoriNamn);
-                        // ta bort rätt rader i datagridview
                         podcastDataGridView.Rows.Clear();
                         SkrivUtSparade();
 
@@ -287,7 +286,7 @@ namespace PodcastApp
                     }
                 }
             }
-            catch (InvalidOperationException) //gör nytt eget exeption
+            catch (InvalidOperationException)
             {
                 MessageBox.Show("Kan inte ta bort valda poddar, välj kategori och försök igen");
             }
