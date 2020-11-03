@@ -236,17 +236,21 @@ namespace PodcastApp
             {
                 string gamlaKategorin = lstKategorier.SelectedItem.ToString();
                 string nyKategori = txtValdKategori.Text;
-                kategoriController.SkapaKategoriObjekt(nyKategori);
-                feedController.ChangeKategori(nyKategori, gamlaKategorin);
-                ClearSelection();
-                kategoriController.DeleteKategori(gamlaKategorin);
-                lstKategorier.Items.Clear();
-                cmbxKategori.Items.Clear();
-                podcastDataGridView.Rows.Clear();
-                SkrivUtSparade();
-                SkrivUtSparadeKategorier();
+                if (!string.Equals(gamlaKategorin, nyKategori, StringComparison.OrdinalIgnoreCase))
+                {
 
-                //kategoriController.UppdateraKategoriObjekt(kategoriNamn);
+
+                    kategoriController.SkapaKategoriObjekt(nyKategori);
+                    feedController.ChangeKategori(nyKategori, gamlaKategorin);
+                    ClearSelection();
+                    kategoriController.DeleteKategori(gamlaKategorin);
+                    lstKategorier.Items.Clear();
+                    cmbxKategori.Items.Clear();
+                    podcastDataGridView.Rows.Clear();
+                    SkrivUtSparade();
+                    SkrivUtSparadeKategorier();
+                }
+
             }
         }
 
