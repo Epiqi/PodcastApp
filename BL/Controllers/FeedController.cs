@@ -24,7 +24,7 @@ namespace BL.Controllers
         {
             try
             {
-                Feed pod = await reader.Read(url);
+                Feed pod = await reader.ReadPodcastRSSAsync(url);
                 pod.Namn = namn;
                 pod.Kategorier = kategori;
                 pod.UppdateringsTid = frekvens;
@@ -98,12 +98,12 @@ namespace BL.Controllers
                     select feed).ToList();
         }
 
-        public void UpdateFeed(string url)
+        public async void UpdateFeed(string url)
         {
             GetFeed(url).NestaUppdatering = DateTime.Now.AddMinutes(Int32.Parse(GetFeed(url).UppdateringsTid));
             Feed ny = GetFeed(url);
             DeleteFeed(url);
-            SkapaFeedObjekt(ny.Namn, ny.Url, ny.UppdateringsTid, ny.Kategorier);
+            await SkapaFeedObjekt(ny.Namn, ny.Url, ny.UppdateringsTid, ny.Kategorier);
             feedRepository.SaveChanges();
         }
         public void BehovsFeedsUppdatera()
